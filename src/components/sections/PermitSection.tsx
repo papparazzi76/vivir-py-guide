@@ -190,9 +190,9 @@ export const PermitSection = () => {
 
             {/* Comparison Table */}
             <AnimatedDiv delay={300}>
-              <div className="bg-card rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 shadow-lg overflow-x-auto">
+              <div className="bg-card rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 shadow-lg">
                 <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Comparación de Opciones</h3>
-                <div className="overflow-x-auto -mx-5 sm:mx-0">
+                <div className="overflow-x-auto">
                   <table className="w-full min-w-[500px]">
                   <thead>
                     <tr className="border-b-2 border-border">
