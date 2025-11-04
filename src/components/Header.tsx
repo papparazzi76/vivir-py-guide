@@ -41,7 +41,7 @@ export const Header = ({ activePage, onNavigate }: HeaderProps) => {
               onClick={() => handleNavClick('home')}
               className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
             >
-              <img src={logo} alt="Living Paraguay" className="h-11 sm:h-13 w-auto" />
+              <img src={logo} alt="Living Paraguay" className="h-12 sm:h-13 w-auto" />
             </button>
 
             {/* Desktop Navigation */}
