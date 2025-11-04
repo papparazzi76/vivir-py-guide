@@ -31,51 +31,30 @@ import { Currency } from '../../types';
 export const TaxationSection = () => {
   // --- Lógica de la Calculadora ---
   const [currencyCode, setCurrencyCode] = useState<Currency['code']>('USD');
-  const [income, setIncome] = useState('');
-  const [totalTaxPYG, setTotalTaxPYG] = useState<number | null>(null);
+  const [grossIncome, setGrossIncome] = useState('');
+  const [deductions, setDeductions] = useState<Deduction[]>([
+    { id: 1, concept: '', amount: '' },
+  ]);
+  const [calculationResult, setCalculationResult] =
+    useState<CalculationResult | null>(null);
 
-  // Tramos de IRP-RSP según el PDF 
+  [cite_start]// Tramos de IRP-RSP según el PDF [cite: 117]
   const BRACKET_1_LIMIT = 50000000;
   const BRACKET_2_LIMIT = 150000000;
   const BRACKET_1_RATE = 0.08;
   const BRACKET_2_RATE = 0.09;
   const BRACKET_3_RATE = 0.10;
 
-  // Impuestos pre-calculados por tramo
+  [cite_start]// Impuestos pre-calculados por tramo [cite: 117]
   const BRACKET_1_TAX = BRACKET_1_LIMIT * BRACKET_1_RATE; // 4,000,000
   const BRACKET_2_TAX =
     (BRACKET_2_LIMIT - BRACKET_1_LIMIT) * BRACKET_2_RATE; // 100,000,000 * 0.09 = 9,000,000
 
-  const handleCalculate = () => {
-    // Limpiar comas o puntos para asegurar que sea un número flotante
-    const numericIncome = parseFloat(income.replace(/[\.,]/g, '')) || 0;
-    if (numericIncome <= 0) {
-      setTotalTaxPYG(0);
-      return;
-    }
-
-    const selectedCurrency = CURRENCIES.find((c) => c.code === currencyCode);
-    if (!selectedCurrency) return;
-
-    // Convertir el ingreso a Guaraníes para el cálculo
-    const incomeInPYG = numericIncome * selectedCurrency.rate;
-
-    let taxInPYG = 0;
-
-    // Lógica de tramos progresivos 
-    if (incomeInPYG <= BRACKET_1_LIMIT) {
-      taxInPYG = incomeInPYG * BRACKET_1_RATE;
-    } else if (incomeInPYG <= BRACKET_2_LIMIT) {
-      taxInPYG =
-        BRACKET_1_TAX + (incomeInPYG - BRACKET_1_LIMIT) * BRACKET_2_RATE;
-    } else {
-      taxInPYG =
-        BRACKET_1_TAX +
-        BRACKET_2_TAX +
-        (incomeInPYG - BRACKET_2_LIMIT) * BRACKET_3_RATE;
-    }
-
-    setTotalTaxPYG(taxInPYG);
+  /**
+   * Limpia un string de formato numérico (puntos, comas) y lo convierte en número.
+   */
+  const parseNumericInput = (input: string): number => {
+    return parseFloat(input.replace(/[\.,]/g, '')) || 0;
   };
 
   /**
@@ -92,6 +71,80 @@ export const TaxationSection = () => {
       maximumFractionDigits: currency === 'PYG' ? 0 : 2,
       minimumFractionDigits: currency === 'PYG' ? 0 : 2,
     })}`;
+  };
+
+  /**
+   * Calcula el total de deducciones en la moneda seleccionada.
+   */
+  const totalDeductionsInCurrency = useMemo(() => {
+    return deductions.reduce((acc, curr) => acc + parseNumericInput(curr.amount), 0);
+  }, [deductions]);
+
+  /**
+   * Maneja el cambio en cualquier campo de una fila de deducción.
+   */
+  const handleDeductionChange = (
+    id: number,
+    field: 'concept' | 'amount',
+    value: string,
+  ) => {
+    setDeductions((prev) =>
+      prev.map((d) => (d.id === id ? { ...d, [field]: value } : d)),
+    );
+  };
+
+  /**
+   * Agrega una nueva fila vacía de deducción.
+   */
+  const addDeductionRow = () => {
+    setDeductions((prev) => [
+      ...prev,
+      { id: Date.now(), concept: '', amount: '' },
+    ]);
+  };
+
+  /**
+   * Elimina una fila de deducción por su ID.
+   */
+  const removeDeductionRow = (id: number) => {
+    setDeductions((prev) => prev.filter((d) => d.id !== id));
+  };
+
+  /**
+   * Ejecuta el cálculo principal del impuesto.
+   */
+  const handleCalculate = () => {
+    const selectedCurrency = CURRENCIES.find((c) => c.code === currencyCode);
+    if (!selectedCurrency) return;
+
+    // 1. Convertir todo a PYG
+    const grossPYG = parseNumericInput(grossIncome) * selectedCurrency.rate;
+    const deductionsPYG = totalDeductionsInCurrency * selectedCurrency.rate;
+
+    // 2. Calcular Renta Neta
+    const netPYG = grossPYG - deductionsPYG;
+
+    let taxInPYG = 0;
+
+    [cite_start]// 3. Aplicar lógica de tramos progresivos [cite: 117]
+    if (netPYG > BRACKET_2_LIMIT) {
+      taxInPYG =
+        BRACKET_1_TAX +
+        BRACKET_2_TAX +
+        (netPYG - BRACKET_2_LIMIT) * BRACKET_3_RATE;
+    } else if (netPYG > BRACKET_1_LIMIT) {
+      taxInPYG = BRACKET_1_TAX + (netPYG - BRACKET_1_LIMIT) * BRACKET_2_RATE;
+    } else if (netPYG > 0) {
+      taxInPYG = netPYG * BRACKET_1_RATE;
+    }
+
+    // 4. Guardar resultados
+    setCalculationResult({
+      grossPYG,
+      deductionsPYG,
+      netPYG: netPYG > 0 ? netPYG : 0,
+      taxPYG: taxInPYG,
+    });
   };
   // --- Fin de la Lógica de la Calculadora ---
 
