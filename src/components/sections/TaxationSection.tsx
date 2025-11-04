@@ -51,14 +51,14 @@ export const TaxationSection = () => {
                   Impuesto a la Renta Personal (IRP)
                 </AccordionTrigger>
                 <AccordionContent className="space-y-4 pt-2">
-                  [cite_start]<p>Es el impuesto principal para individuos residentes. Se divide en dos categorías que se liquidan por separado:</p>
+                  <p>Es el impuesto principal para individuos residentes. Se divide en dos categorías que se liquidan por separado:</p>
                   <div>
                     <h4 className="font-semibold text-base text-primary">1. Rentas de Servicios Personales (IRP-RSP)</h4>
-                    [cite_start]<p className="text-sm text-muted-foreground mb-2">Grava ingresos por trabajo local (salarios, honorarios).</p>
+                    <p className="text-sm text-muted-foreground mb-2">Grava ingresos por trabajo local (salarios, honorarios).</p>
                     <ul className="list-disc pl-5 text-sm space-y-1">
-                      [cite_start]<li><strong>Tasas Progresivas:</strong> 8%, 9% y 10% sobre la renta neta.</li>
-                      [cite_start]<li><strong>Deducciones:</strong> Se pueden deducir gastos personales y familiares realizados en el país.</li>
-                      [cite_start]<li><strong>Deducciones Clave para Expat:</strong> Se permite deducir gastos en <strong>salud</strong> y <strong>educación</strong> realizados en el <strong>exterior</strong>.</li>
+                      <li><strong>Tasas Progresivas:</strong> 8%, 9% y 10% sobre la renta neta.</li>
+                      <li><strong>Deducciones:</strong> Se pueden deducir gastos personales y familiares realizados en el país.</li>
+                      <li><strong>Deducciones Clave para Expat:</strong> Se permite deducir gastos en <strong>salud</strong> y <strong>educación</strong> realizados en el <strong>exterior</strong>.</li>
                     </ul>
                   </div>
                   <div>
