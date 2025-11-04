@@ -71,7 +71,8 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    /* MODIFICADO: Agregada la clase para asegurar que no haya desbordamiento horizontal forzado */
+    @apply bg-background text-foreground font-sans antialiased overflow-x-hidden;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 
