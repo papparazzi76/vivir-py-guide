@@ -6,6 +6,14 @@ import { Chatbot } from '../components/Chatbot';
 import { HeroSection } from '../components/sections/HeroSection';
 import { PermitSection } from '../components/sections/PermitSection';
 import { HousingSearch } from '../components/sections/HousingSearch';
+// --- NUEVAS IMPORTACIONES ---
+import { SchoolSection } from '../components/sections/SchoolSection';
+import { NeighborhoodSection } from '../components/sections/NeighborhoodSection';
+import { TaxationSection } from '../components/sections/TaxationSection';
+import { SocialSecuritySection } from '../components/sections/SocialSecuritySection';
+import { FaqSection } from '../components/sections/FaqSection';
+import { ContactSection } from '../components/sections/ContactSection';
+// --- FIN DE NUEVAS IMPORTACIONES ---
 
 const Index = () => {
   const [activePage, setActivePage] = useState<Page>('home');
@@ -18,6 +26,20 @@ const Index = () => {
         return <PermitSection />;
       case 'housing':
         return <HousingSearch />;
+      // --- SECCIONES AÑADIDAS ---
+      case 'schools':
+        return <SchoolSection />;
+      case 'neighborhoods':
+        return <NeighborhoodSection />;
+      case 'taxation':
+        return <TaxationSection />;
+      case 'social-security':
+        return <SocialSecuritySection />;
+      case 'faq':
+        return <FaqSection />;
+      case 'contact':
+        return <ContactSection />;
+      // --- FIN DE SECCIONES AÑADIDAS ---
       default:
         return (
           <section className="min-h-screen flex items-center justify-center py-20">
@@ -39,7 +61,13 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Header activePage={activePage} onNavigate={setActivePage} />
-      <main className="pt-16 sm:pt-20">{renderPage()}</main>
+      {/* MODIFICADO: Se eliminó pt-16 sm:pt-20 de main para que el hero ocupe toda la pantalla */}
+      <main>
+        {/* Se aplica el padding solo si NO es la home */}
+        <div className={activePage !== 'home' ? 'pt-16 sm:pt-20' : ''}>
+          {renderPage()}
+        </div>
+      </main>
       <Footer onNavigate={setActivePage} />
       <Chatbot />
     </div>
