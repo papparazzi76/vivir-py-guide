@@ -19,7 +19,7 @@ export const SocialSecuritySection = () => {
           <AnimatedDiv delay={100}>
             <Card className="shadow-lg hover-lift">
               <CardHeader>
-                [cite_start]<CardTitle className="text-2xl">Instituto de Previsión Social (IPS) [cite: 122]</CardTitle>
+                <CardTitle className="text-2xl">Instituto de Previsión Social (IPS) </CardTitle>
                 <CardDescription>
                   El IPS es el sistema central de seguridad social de Paraguay, que brinda cobertura de salud, jubilación y otros beneficios.
                 </CardDescription>
@@ -80,7 +80,7 @@ export const SocialSecuritySection = () => {
                 </div>
                  <div className="bg-primary/10 rounded-lg p-4 text-primary-dark">
                   <h4 className="font-semibold mb-1">Beneficio Fiscal</h4>
-                  [cite_start]<p className="text-sm">Los aportes realizados al IPS son <strong>100% deducibles</strong> del Impuesto a la Renta Personal (IRP-RSP)[cite: 122].</p>
+                  <p className="text-sm">Los aportes realizados al IPS son <strong>100% deducibles</strong> del Impuesto a la Renta Personal (IRP-RSP).</p>
                 </div>
               </CardContent>
             </Card>
