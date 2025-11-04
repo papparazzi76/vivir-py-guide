@@ -10,8 +10,8 @@ interface FooterProps {
 export const Footer = ({ onNavigate }: FooterProps) => {
   return (
     <footer className="bg-py-blue-dark text-white">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
           {/* Logo y Descripción */}
           <div>
             <img src={logo} alt="Living Paraguay" className="h-12 w-auto mb-4 brightness-0 invert" />

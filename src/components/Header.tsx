@@ -34,14 +34,14 @@ export const Header = ({ activePage, onNavigate }: HeaderProps) => {
           isScrolled ? 'backdrop-blur-glass shadow-md' : 'bg-white/90'
         }`}
       >
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
             <button
               onClick={() => handleNavClick('home')}
               className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
             >
-              <img src={logo} alt="Living Paraguay" className="h-12 w-auto" />
+              <img src={logo} alt="Living Paraguay" className="h-10 sm:h-12 w-auto" />
             </button>
 
             {/* Desktop Navigation */}

@@ -67,7 +67,7 @@ export const Chatbot = () => {
     <>
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-4 w-96 max-w-[calc(100vw-2rem)] h-[600px] bg-white rounded-2xl shadow-xl z-50 flex flex-col overflow-hidden">
+        <div className="fixed bottom-20 sm:bottom-24 right-2 sm:right-4 w-[calc(100vw-1rem)] sm:w-96 max-w-[calc(100vw-1rem)] h-[500px] sm:h-[600px] bg-white rounded-2xl shadow-xl z-50 flex flex-col overflow-hidden">
           {/* Header */}
           <div className="bg-gradient-to-r from-py-red to-py-blue p-4 text-white flex items-center justify-between">
             <div className="flex items-center space-x-3">
@@ -146,7 +146,7 @@ export const Chatbot = () => {
       {/* FAB */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 w-14 h-14 bg-gradient-to-r from-py-red to-py-blue text-white rounded-full shadow-lg hover:shadow-xl transition-all z-50 flex items-center justify-center group"
+        className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-py-red to-py-blue text-white rounded-full shadow-lg hover:shadow-xl transition-all z-50 flex items-center justify-center group"
       >
         <Icon name={isOpen ? 'close' : 'chat'} size={24} />
         {!isOpen && (

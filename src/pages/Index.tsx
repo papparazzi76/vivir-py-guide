@@ -39,7 +39,7 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Header activePage={activePage} onNavigate={setActivePage} />
-      <main className="pt-20">{renderPage()}</main>
+      <main className="pt-16 sm:pt-20">{renderPage()}</main>
       <Footer onNavigate={setActivePage} />
       <Chatbot />
     </div>

@@ -38,7 +38,7 @@ export const HeroSection = ({ onNavigate }: HeroSectionProps) => {
   }, []);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-[calc(100vh-4rem)] sm:h-screen w-full overflow-hidden">
       {/* Background Images with Transitions */}
       {HERO_SLIDES.map((slide, index) => (
         <div
@@ -58,24 +58,24 @@ export const HeroSection = ({ onNavigate }: HeroSectionProps) => {
 
       {/* Content */}
       <div className="relative z-10 h-full flex items-center">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl">
-            <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in">
+            <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 animate-fade-in leading-tight">
               {HERO_SLIDES[currentSlide].title}
             </h1>
-            <p className="text-white/90 text-xl md:text-2xl mb-12 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <p className="text-white/90 text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-12 animate-fade-in" style={{ animationDelay: '0.2s' }}>
               {HERO_SLIDES[currentSlide].subtitle}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
               <button
                 onClick={() => onNavigate('permits')}
-                className="px-8 py-4 bg-primary text-primary-foreground rounded-lg font-bold text-lg hover:bg-primary-hover transition-all hover:shadow-glow-red hover:-translate-y-1"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-primary text-primary-foreground rounded-lg font-bold text-base sm:text-lg hover:bg-primary-hover transition-all hover:shadow-glow-red hover:-translate-y-1"
               >
                 Obtener Residencia
               </button>
               <button
                 onClick={() => onNavigate('housing')}
-                className="px-8 py-4 bg-white/10 text-white border-2 border-white rounded-lg font-bold text-lg hover:bg-white hover:text-py-blue-dark transition-all hover:-translate-y-1 backdrop-blur-sm"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-white/10 text-white border-2 border-white rounded-lg font-bold text-base sm:text-lg hover:bg-white hover:text-py-blue-dark transition-all hover:-translate-y-1 backdrop-blur-sm"
               >
                 Buscar Vivienda
               </button>
