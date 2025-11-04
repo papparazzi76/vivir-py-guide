@@ -183,15 +183,14 @@ export const TaxationSection = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3 text-2xl">
                     <Icon name="shield" size={24} className="text-primary" />
-                    [cite_start]Pilar Central: Principio de Territorialidad [cite: 6]
+                    Pilar Central: Principio de Territorialidad 
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-lg text-foreground">
-                    [cite_start]Paraguay se rige por el <strong>Principio de la Fuente</strong>[cite: 37].
+                    Paraguay se rige por el <strong>Principio de la Fuente</strong>.
                     Esto significa que, en general, solo se gravan las rentas
-                    generadas <strong>dentro</strong> de las fronteras del país
-                    [cite_start][cite: 6].
+                    generadas <strong>dentro</strong> de las fronteras del país.
                   </p>
                   <ul className="mt-4 space-y-2">
                     <li className="flex items-start space-x-3">
@@ -201,9 +200,9 @@ export const TaxationSection = () => {
                       />
                       <p>
                         <strong>Impuesto 0% sobre rentas extranjeras:</strong>{' '}
-                        [cite_start]Salarios por trabajo remoto para empleadores extranjeros[cite: 47],
-                        [cite_start]dividendos de empresas foráneas [cite: 49] o intereses bancarios en
-                        [cite_start]el exterior [cite: 50] no están sujetos a impuestos en Paraguay.
+                        Salarios por trabajo remoto para empleadores extranjeros,
+                        dividendos de empresas foráneas o intereses bancarios en
+                        el exterior no están sujetos a impuestos en Paraguay.
                       </p>
                     </li>
                   </ul>
@@ -218,51 +217,49 @@ export const TaxationSection = () => {
                   className="bg-white rounded-xl shadow-lg px-6"
                 >
                   <AccordionTrigger className="text-xl font-bold hover:no-underline">
-                    [cite_start]Impuesto a la Renta Personal (IRP) [cite: 107]
+                    Impuesto a la Renta Personal (IRP) 
                   </AccordionTrigger>
                   <AccordionContent className="space-y-4 pt-2">
                     <p>
-                      [cite_start]Es el impuesto principal para individuos residentes[cite: 107].
-                      Se divide en dos categorías que se liquidan por separado
-                      [cite_start][cite: 109]:
+                      Es el impuesto principal para individuos residentes.
+                      Se divide en dos categorías que se liquidan por separado:
                     </p>
                     <div>
                       <h4 className="font-semibold text-base text-primary">
-                        1. [cite_start]Rentas de Servicios Personales (IRP-RSP) [cite: 110]
+                        1. Rentas de Servicios Personales (IRP-RSP) 
                       </h4>
                       <p className="text-sm text-muted-foreground mb-2">
-                        Grava ingresos por trabajo local (salarios, honorarios)
-                        [cite_start][cite: 113].
-                      </p>
+                        Grava ingresos por trabajo local (salarios, honorarios).                        
+                     </p>
                       <ul className="list-disc pl-5 text-sm space-y-1">
                         <li>
                           <strong>Tasas Progresivas:</strong> 8%, 9% y 10% sobre
-                          [cite_start]la renta neta[cite: 117].
+                          la renta neta.
                         </li>
                         <li>
                           <strong>Deducciones:</strong> Se pueden deducir gastos
-                          [cite_start]personales y familiares realizados en el país[cite: 120].
+                          personales y familiares realizados en el país.
                         </li>
                         <li>
                           <strong>Deducciones Clave para Expat:</strong> Se
-                          [cite_start]permite deducir gastos en <strong>salud</strong> [cite: 125] y{' '}
-                          [cite_start]<strong>educación</strong> [cite: 126] realizados en el{' '}
+                          permite deducir gastos en <strong>salud</strong> y{' '}
+                          <strong>educación</strong>  realizados en el{' '}
                           <strong>exterior</strong>.
                         </li>
                       </ul>
                     </div>
                     <div>
                       <h4 className="font-semibold text-base text-primary">
-                        2. [cite_start]Rentas y Ganancias del Capital (IRP-RGC) [cite: 111]
+                        2. Rentas y Ganancias del Capital (IRP-RGC) 
                       </h4>
                       <p className="text-sm text-muted-foreground mb-2">
                         Grava rentas pasivas de{' '}
                         <strong>fuente paraguaya</strong> (alquileres, intereses
-                        [cite_start]locales)[cite: 130].
+                        locales).
                       </p>
                       <ul className="list-disc pl-5 text-sm space-y-1">
                         <li>
-                          [cite_start]<strong>Tasa Única:</strong> 8% sobre la Renta Neta[cite: 132].
+                          <strong>Tasa Única:</strong> 8% sobre la Renta Neta.
                         </li>
                       </ul>
                     </div>
@@ -274,21 +271,21 @@ export const TaxationSection = () => {
                   className="bg-white rounded-xl shadow-lg px-6 mt-4"
                 >
                   <AccordionTrigger className="text-xl font-bold hover:no-underline">
-                    [cite_start]Impuesto al Valor Agregado (IVA) [cite: 138]
+                    Impuesto al Valor Agregado (IVA) 
                   </AccordionTrigger>
                   <AccordionContent className="space-y-4 pt-2">
-                    [cite_start]<p>Es el principal impuesto al consumo [cite: 27-28].</p>
+                    <p>Es el principal impuesto al consumo.</p>
                     <ul className="list-disc pl-5 text-sm space-y-1">
-                      [cite_start]<li><strong>Tasa General:</strong> 10%[cite: 145].</li>
+                      <li><strong>Tasa General:</strong> 10%.</li>
                       <li>
                         <strong>Tasa Reducida:</strong> 5% para alquileres de
-                        [cite_start]vivienda y ciertos bienes[cite: 145].
+                       vivienda y ciertos bienes.
                       </li>
                       <li>
                         <strong>¡Clave para Nómadas Digitales!:</strong> La{' '}
                         <strong>exportación de servicios</strong> (como
                         consultoría, desarrollo de software, etc.) a clientes del
-                        [cite_start]exterior está <strong>exenta de IVA</strong>[cite: 151, 153].
+                        exterior está <strong>exenta de IVA</strong>.
                       </li>
                     </ul>
                   </AccordionContent>
@@ -299,19 +296,19 @@ export const TaxationSection = () => {
                   className="bg-white rounded-xl shadow-lg px-6 mt-4"
                 >
                   <AccordionTrigger className="text-xl font-bold hover:no-underline">
-                    [cite_start]Impuesto a los Dividendos (IDU) [cite: 164]
+                    Impuesto a los Dividendos (IDU) 
                   </AccordionTrigger>
                   <AccordionContent className="space-y-4 pt-2">
                     <p>
                       Grava la <strong>distribución</strong> de ganancias de{' '}
-                      [cite_start]<strong>empresas paraguayas</strong> a sus accionistas [cite: 165-166].
+                      <strong>empresas paraguayas</strong> a sus accionistas.
                     </p>
                     <ul className="list-disc pl-5 text-sm space-y-1">
-                      [cite_start]<li><strong>Tasa para Residentes:</strong> 8%[cite: 168].</li>
-                      [cite_start]<li><strong>Tasa para No Residentes:</strong> 15%[cite: 169].</li>
+                      <li><strong>Tasa para Residentes:</strong> 8%.</li>
+                     <li><strong>Tasa para No Residentes:</strong> 15%.</li>
                       <li>
                         <strong>Importante:</strong> Este impuesto no aplica a
-                        [cite_start]dividendos recibidos de empresas extranjeras[cite: 175].
+                        dividendos recibidos de empresas extranjeras.
                       </li>
                     </ul>
                   </AccordionContent>
@@ -484,8 +481,7 @@ export const TaxationSection = () => {
                     )}
 
                     <p className="text-xs text-muted-foreground pt-2">
-                      *Cálculo basado en las tasas progresivas del IRP-RSP
-                      [cite_start][cite: 117]. No constituye asesoría fiscal.
+                      *Cálculo basado en las tasas progresivas del IRP-RSP. No constituye asesoría fiscal.
                     </p>
                   </CardFooter>
                 )}
