@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Page } from '../types';
-import { NAV_LINKS } from '../constants';
 import { Icon } from './Icon';
+import { LanguageSelector } from './LanguageSelector';
+import { useLanguage } from '../contexts/LanguageContext';
 import logo from '@/assets/logo.png';
 
 interface HeaderProps {
@@ -10,8 +11,21 @@ interface HeaderProps {
 }
 
 export const Header = ({ activePage, onNavigate }: HeaderProps) => {
+  const { t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const navLinks = [
+    { id: 'home' as Page, label: t.nav.home },
+    { id: 'permits' as Page, label: t.nav.permits },
+    { id: 'housing' as Page, label: t.nav.housing },
+    { id: 'schools' as Page, label: t.nav.schools },
+    { id: 'neighborhoods' as Page, label: t.nav.neighborhoods },
+    { id: 'taxation' as Page, label: t.nav.taxation },
+    { id: 'social-security' as Page, label: t.nav.socialSecurity },
+    { id: 'faq' as Page, label: t.nav.faq },
+    { id: 'contact' as Page, label: t.nav.contact },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,8 +59,8 @@ export const Header = ({ activePage, onNavigate }: HeaderProps) => {
             </button>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8">
-              {NAV_LINKS.map((link) => (
+            <nav className="hidden lg:flex items-center space-x-6">
+              {navLinks.map((link) => (
                 <button
                   key={link.id}
                   onClick={() => handleNavClick(link.id)}

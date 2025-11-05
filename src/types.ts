@@ -38,6 +38,8 @@ export interface School {
   levels: string[];
   ranking: number;
   description: string;
+  tuition?: string;
+  category?: 'elite' | 'traditional' | 'accessible';
 }
 
 export interface Neighborhood {
