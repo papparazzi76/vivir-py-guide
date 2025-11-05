@@ -190,7 +190,7 @@ export const TaxationSection = () => {
                   </AccordionTrigger>
                   <AccordionContent className="space-y-4 pt-2">
                     <p>
-                      Es el impuesto principal para individuos residentes[cite: 1, 107].
+                      Es el impuesto principal para individuos residentes.
                       Se divide en dos categorías que se liquidan por separado:
                      </p>
                     <div>
