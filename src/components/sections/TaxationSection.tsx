@@ -28,11 +28,21 @@ import {
 import { CURRENCIES } from '../../constants';
 import { Currency } from '../../types';
 
+interface Deduction {
+  id: string;
+  concept: string;
+  amount: string;
+}
+
 export const TaxationSection = () => {
   // --- Lógica de la Calculadora ---
   const [currencyCode, setCurrencyCode] = useState<Currency['code']>('USD');
   const [income, setIncome] = useState('');
+  const [deductions, setDeductions] = useState<Deduction[]>([
+    { id: '1', concept: '', amount: '' }
+  ]);
   const [totalTaxPYG, setTotalTaxPYG] = useState<number | null>(null);
+  const [netIncomePYG, setNetIncomePYG] = useState<number | null>(null);
 
   // Tramos de IRP-RSP según el PDF 
   const BRACKET_1_LIMIT = 50000000;
@@ -46,11 +56,28 @@ export const TaxationSection = () => {
   const BRACKET_2_TAX =
     (BRACKET_2_LIMIT - BRACKET_1_LIMIT) * BRACKET_2_RATE; // 100,000,000 * 0.09 = 9,000,000
 
+  const addDeduction = () => {
+    setDeductions([...deductions, { id: Date.now().toString(), concept: '', amount: '' }]);
+  };
+
+  const removeDeduction = (id: string) => {
+    if (deductions.length > 1) {
+      setDeductions(deductions.filter(d => d.id !== id));
+    }
+  };
+
+  const updateDeduction = (id: string, field: 'concept' | 'amount', value: string) => {
+    setDeductions(deductions.map(d => 
+      d.id === id ? { ...d, [field]: value } : d
+    ));
+  };
+
   const handleCalculate = () => {
     // Limpiar comas o puntos para asegurar que sea un número flotante
     const numericIncome = parseFloat(income.replace(/[\.,]/g, '')) || 0;
     if (numericIncome <= 0) {
       setTotalTaxPYG(0);
+      setNetIncomePYG(0);
       return;
     }
 
@@ -60,19 +87,29 @@ export const TaxationSection = () => {
     // Convertir el ingreso a Guaraníes para el cálculo
     const incomeInPYG = numericIncome * selectedCurrency.rate;
 
+    // Calcular total de deducciones en PYG
+    const totalDeductionsPYG = deductions.reduce((sum, deduction) => {
+      const amount = parseFloat(deduction.amount.replace(/[\.,]/g, '')) || 0;
+      return sum + (amount * selectedCurrency.rate);
+    }, 0);
+
+    // Calcular renta neta (ingreso - deducciones)
+    const netIncome = Math.max(0, incomeInPYG - totalDeductionsPYG);
+    setNetIncomePYG(netIncome);
+
     let taxInPYG = 0;
 
-    // Lógica de tramos progresivos 
-    if (incomeInPYG <= BRACKET_1_LIMIT) {
-      taxInPYG = incomeInPYG * BRACKET_1_RATE;
-    } else if (incomeInPYG <= BRACKET_2_LIMIT) {
+    // Lógica de tramos progresivos sobre la renta neta
+    if (netIncome <= BRACKET_1_LIMIT) {
+      taxInPYG = netIncome * BRACKET_1_RATE;
+    } else if (netIncome <= BRACKET_2_LIMIT) {
       taxInPYG =
-        BRACKET_1_TAX + (incomeInPYG - BRACKET_1_LIMIT) * BRACKET_2_RATE;
+        BRACKET_1_TAX + (netIncome - BRACKET_1_LIMIT) * BRACKET_2_RATE;
     } else {
       taxInPYG =
         BRACKET_1_TAX +
         BRACKET_2_TAX +
-        (incomeInPYG - BRACKET_2_LIMIT) * BRACKET_3_RATE;
+        (netIncome - BRACKET_2_LIMIT) * BRACKET_3_RATE;
     }
 
     setTotalTaxPYG(taxInPYG);
@@ -286,7 +323,7 @@ export const TaxationSection = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="income">Renta Neta Anual</Label>
+                    <Label htmlFor="income">Renta Bruta Anual</Label>
                     <Input
                       id="income"
                       type="text"
@@ -296,17 +333,75 @@ export const TaxationSection = () => {
                     />
                   </div>
 
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <Label>Deducciones</Label>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={addDeduction}
+                      >
+                        <Icon name="plus" size={14} className="mr-1" />
+                        Agregar
+                      </Button>
+                    </div>
+                    
+                    <div className="space-y-2 max-h-60 overflow-y-auto">
+                      {deductions.map((deduction, index) => (
+                        <div key={deduction.id} className="flex gap-2">
+                          <Input
+                            placeholder="Concepto (ej: Salud)"
+                            value={deduction.concept}
+                            onChange={(e) => updateDeduction(deduction.id, 'concept', e.target.value)}
+                            className="flex-1"
+                          />
+                          <Input
+                            placeholder="Monto"
+                            type="text"
+                            value={deduction.amount}
+                            onChange={(e) => updateDeduction(deduction.id, 'amount', e.target.value)}
+                            className="w-28"
+                          />
+                          {deductions.length > 1 && (
+                            <Button
+                              type="button"
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => removeDeduction(deduction.id)}
+                              className="px-2"
+                            >
+                              <Icon name="trash" size={16} className="text-destructive" />
+                            </Button>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
                   <Button onClick={handleCalculate} className="w-full">
-                    <Icon name="check" size={16} className="mr-2" />
+                    <Icon name="calculator" size={16} className="mr-2" />
                     Calcular Impuesto
                   </Button>
                 </CardContent>
 
-                {totalTaxPYG !== null && (
+                {totalTaxPYG !== null && netIncomePYG !== null && (
                   <CardFooter className="flex flex-col items-start space-y-3 bg-muted/50 pt-6">
                     <h4 className="font-semibold text-lg">
                       Resultado Estimado:
                     </h4>
+                    
+                    <div className="w-full flex justify-between items-center text-sm">
+                      <span className="text-muted-foreground">
+                        Renta Neta (después de deducciones):
+                      </span>
+                      <span className="font-semibold">
+                        {formatCurrency(netIncomePYG, currencyCode)}
+                      </span>
+                    </div>
+
+                    <div className="w-full h-px bg-border my-2" />
+
                     <div className="w-full flex justify-between items-center">
                       <span className="text-muted-foreground">
                         Impuesto en PYG:
@@ -326,8 +421,7 @@ export const TaxationSection = () => {
                       </div>
                     )}
                     <p className="text-xs text-muted-foreground pt-2">
-                      *Cálculo basado en las tasas progresivas del IRP-RSP
-                      . No constituye asesoría fiscal.
+                      *Cálculo basado en las tasas progresivas del IRP-RSP. No constituye asesoría fiscal.
                     </p>
                   </CardFooter>
                 )}
