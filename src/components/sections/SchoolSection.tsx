@@ -1,18 +1,21 @@
 import { AnimatedDiv } from '../AnimatedDiv';
 import { Icon } from '../Icon';
 import { SCHOOLS } from '../../constants';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { Badge } from '@/components/ui/badge';
 
 export const SchoolSection = () => {
+  const { t } = useLanguage();
+  
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6">
         <AnimatedDiv className="text-center mb-8 sm:mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
-            Colegios y Educación
+            {t.schools.title}
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-muted-foreground">
-            Encuentra la institución ideal para tu familia en Paraguay.
+            {t.schools.subtitle}
           </p>
         </AnimatedDiv>
 
@@ -36,7 +39,7 @@ export const SchoolSection = () => {
                   </p>
                   
                   <div className="mb-4">
-                    <h4 className="text-xs font-semibold text-muted-foreground mb-2">IDIOMAS</h4>
+                    <h4 className="text-xs font-semibold text-muted-foreground mb-2">{t.schools.languages}</h4>
                     <div className="flex flex-wrap gap-2">
                       {school.languages.map((lang) => (
                         <Badge key={lang} variant="secondary">{lang}</Badge>
@@ -45,7 +48,7 @@ export const SchoolSection = () => {
                   </div>
 
                   <div>
-                    <h4 className="text-xs font-semibold text-muted-foreground mb-2">NIVELES</h4>
+                    <h4 className="text-xs font-semibold text-muted-foreground mb-2">{t.schools.levels}</h4>
                     <div className="flex flex-wrap gap-2">
                       {school.levels.map((level) => (
                         <Badge key={level} variant="outline">{level}</Badge>

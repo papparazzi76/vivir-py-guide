@@ -1,18 +1,21 @@
 import { AnimatedDiv } from '../AnimatedDiv';
 import { Icon } from '../Icon';
 import { NEIGHBORHOODS } from '../../constants';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { Badge } from '@/components/ui/badge';
 
 export const NeighborhoodSection = () => {
+  const { t } = useLanguage();
+  
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6">
         <AnimatedDiv className="text-center mb-8 sm:mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
-            Explora los Mejores Barrios
+            {t.neighborhoods.title}
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-muted-foreground">
-            Descubre dónde construir tu nueva vida en Paraguay.
+            {t.neighborhoods.subtitle}
           </p>
         </AnimatedDiv>
 

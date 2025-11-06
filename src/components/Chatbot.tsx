@@ -1,14 +1,16 @@
 import { useState, useRef, useEffect } from 'react';
 import { ChatMessage } from '../types';
 import { sendMessage } from '../services/geminiService';
+import { useLanguage } from '../contexts/LanguageContext';
 import { Icon } from './Icon';
 
 export const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useLanguage();
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: 'assistant',
-      content: '¡Hola! Soy Guaraní Guide, tu asistente para mudarte a Paraguay. ¿En qué puedo ayudarte hoy?',
+      content: t.chatbot.title,
     },
   ]);
   const [inputValue, setInputValue] = useState('');
@@ -48,7 +50,7 @@ export const Chatbot = () => {
         ...prev,
         {
           role: 'assistant',
-          content: 'Lo siento, hubo un error. Por favor, intenta de nuevo.',
+          content: t.chatbot.error,
         },
       ]);
     } finally {
@@ -75,8 +77,8 @@ export const Chatbot = () => {
                 <Icon name="chat" size={20} />
               </div>
               <div>
-                <h3 className="font-bold">Guaraní Guide</h3>
-                <p className="text-xs opacity-90">Tu asistente para vivir en Paraguay</p>
+                <h3 className="font-bold">{t.chatbot.title}</h3>
+                <p className="text-xs opacity-90">{t.chatbot.placeholder}</p>
               </div>
             </div>
             <button
@@ -127,7 +129,7 @@ export const Chatbot = () => {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Escribe tu pregunta..."
+                placeholder={t.chatbot.placeholder}
                 className="flex-1 px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm"
                 disabled={isLoading}
               />

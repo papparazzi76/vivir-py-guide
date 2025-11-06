@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { AnimatedDiv } from '../AnimatedDiv';
 import { Icon } from '../Icon';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { CONTACT_INFO } from '../../constants';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -8,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 
 export const ContactSection = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -27,8 +29,8 @@ export const ContactSection = () => {
       setIsSubmitting(false);
       setFormData({ name: '', email: '', subject: '', message: '' });
       toast({
-        title: "¡Mensaje Enviado!",
-        description: "Gracias por contactarnos. Te responderemos a la brevedad.",
+        title: t.contact.formSuccess,
+        description: t.contact.subtitle,
       });
     }, 1500);
   };
@@ -42,10 +44,10 @@ export const ContactSection = () => {
       <div className="container mx-auto px-4 sm:px-6">
         <AnimatedDiv className="text-center mb-8 sm:mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
-            Contáctanos
+            {t.contact.title}
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-muted-foreground">
-            ¿Listo para empezar tu proceso? Estamos aquí para ayudarte.
+            {t.contact.subtitle}
           </p>
         </AnimatedDiv>
 
@@ -53,14 +55,14 @@ export const ContactSection = () => {
           {/* Información de Contacto */}
           <AnimatedDiv delay={100}>
             <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 h-full">
-              <h3 className="text-2xl font-bold mb-6">Información de Contacto</h3>
+              <h3 className="text-2xl font-bold mb-6">{t.contact.formTitle}</h3>
               <div className="space-y-5">
                 <a href={`mailto:${CONTACT_INFO.email}`} className="flex items-center gap-4 group">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center transition-colors group-hover:bg-primary">
                     <Icon name="mail" size={24} className="text-primary transition-colors group-hover:text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-lg">Email</h4>
+                    <h4 className="font-semibold text-lg">{t.contact.email}</h4>
                     <p className="text-muted-foreground group-hover:text-primary transition-colors">{CONTACT_INFO.email}</p>
                   </div>
                 </a>
@@ -70,7 +72,7 @@ export const ContactSection = () => {
                     <Icon name="phone" size={24} className="text-primary transition-colors group-hover:text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-lg">Teléfono</h4>
+                    <h4 className="font-semibold text-lg">{t.contact.phone}</h4>
                     <p className="text-muted-foreground group-hover:text-primary transition-colors">{CONTACT_INFO.phone}</p>
                   </div>
                 </a>
@@ -80,7 +82,7 @@ export const ContactSection = () => {
                     <Icon name="chat" size={24} className="text-primary transition-colors group-hover:text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-lg">WhatsApp</h4>
+                    <h4 className="font-semibold text-lg">{t.contact.whatsapp}</h4>
                     <p className="text-muted-foreground group-hover:text-primary transition-colors">{CONTACT_INFO.whatsapp}</p>
                   </div>
                 </a>
@@ -91,13 +93,13 @@ export const ContactSection = () => {
           {/* Formulario de Contacto */}
           <AnimatedDiv delay={200}>
             <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8">
-              <h3 className="text-2xl font-bold mb-6">Envíanos un Mensaje</h3>
+              <h3 className="text-2xl font-bold mb-6">{t.contact.formTitle}</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <Input
                     name="name"
                     type="text"
-                    placeholder="Nombre Completo"
+                    placeholder={t.contact.formName}
                     value={formData.name}
                     onChange={handleChange}
                     required
@@ -105,7 +107,7 @@ export const ContactSection = () => {
                   <Input
                     name="email"
                     type="email"
-                    placeholder="Email"
+                    placeholder={t.contact.formEmail}
                     value={formData.email}
                     onChange={handleChange}
                     required
@@ -114,21 +116,21 @@ export const ContactSection = () => {
                 <Input
                   name="subject"
                   type="text"
-                  placeholder="Asunto"
+                  placeholder={t.contact.formSubject}
                   value={formData.subject}
                   onChange={handleChange}
                   required
                 />
                 <Textarea
                   name="message"
-                  placeholder="Tu mensaje..."
+                  placeholder={t.contact.formMessage}
                   rows={5}
                   value={formData.message}
                   onChange={handleChange}
                   required
                 />
                 <Button type="submit" disabled={isSubmitting} className="w-full py-3">
-                  {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
+                  {isSubmitting ? t.contact.formSubmitting : t.contact.formSubmit}
                 </Button>
               </form>
             </div>

@@ -1,17 +1,20 @@
 import { AnimatedDiv } from '../AnimatedDiv';
 import { Icon } from '../Icon';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 
 export const SocialSecuritySection = () => {
+  const { t } = useLanguage();
+  
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6">
         <AnimatedDiv className="text-center mb-8 sm:mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
-            Seguridad Social en Paraguay (IPS)
+            {t.socialSecurity.title}
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Comprendiendo el Instituto de Previsión Social.
+            {t.socialSecurity.subtitle}
           </p>
         </AnimatedDiv>
 

@@ -1,19 +1,21 @@
 import { useState } from 'react';
 import { PROPERTIES } from '../../constants';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { AnimatedDiv } from '../AnimatedDiv';
 
 export const HousingSearch = () => {
+  const { t } = useLanguage();
   const [filters, setFilters] = useState({
-    city: 'Todos',
-    type: 'Todos',
-    propertyType: 'Todos',
+    city: t.housing.filterAllCities,
+    type: t.housing.filterAllTypes,
+    propertyType: t.housing.filterAllProperties,
     maxPrice: 50000000,
   });
 
   const filteredProperties = PROPERTIES.filter(prop => {
-    if (filters.city !== 'Todos' && prop.city !== filters.city) return false;
-    if (filters.type !== 'Todos' && prop.type !== filters.type) return false;
-    if (filters.propertyType !== 'Todos' && prop.propertyType !== filters.propertyType) return false;
+    if (filters.city !== t.housing.filterAllCities && prop.city !== filters.city) return false;
+    if (filters.type !== t.housing.filterAllTypes && prop.type !== filters.type) return false;
+    if (filters.propertyType !== t.housing.filterAllProperties && prop.propertyType !== filters.propertyType) return false;
     if (prop.price > filters.maxPrice) return false;
     return true;
   });
@@ -22,8 +24,8 @@ export const HousingSearch = () => {
     <section className="py-12 sm:py-16 lg:py-20 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6">
         <AnimatedDiv className="text-center mb-8 sm:mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">Buscar Vivienda</h2>
-          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground">Encuentra tu hogar ideal en Paraguay</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">{t.housing.title}</h2>
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground">{t.housing.subtitle}</p>
         </AnimatedDiv>
 
         {/* Filters */}
@@ -34,7 +36,7 @@ export const HousingSearch = () => {
               onChange={(e) => setFilters({ ...filters, city: e.target.value })}
               className="px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white"
             >
-              <option>Todos</option>
+              <option>{t.housing.filterAllCities}</option>
               <option>Asunción</option>
               <option>Luque</option>
               <option>Ciudad del Este</option>
@@ -44,21 +46,21 @@ export const HousingSearch = () => {
               onChange={(e) => setFilters({ ...filters, type: e.target.value })}
               className="px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white"
             >
-              <option>Todos</option>
-              <option>Alquiler</option>
-              <option>Venta</option>
+              <option>{t.housing.filterAllTypes}</option>
+              <option>{t.housing.filterRent}</option>
+              <option>{t.housing.filterSale}</option>
             </select>
             <select
               value={filters.propertyType}
               onChange={(e) => setFilters({ ...filters, propertyType: e.target.value })}
               className="px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white col-span-2 md:col-span-1"
             >
-              <option>Todos</option>
-              <option>Apartamento</option>
-              <option>Casa</option>
+              <option>{t.housing.filterAllProperties}</option>
+              <option>{t.housing.filterApartment}</option>
+              <option>{t.housing.filterHouse}</option>
             </select>
             <div className="col-span-2 md:col-span-1 flex items-center gap-2">
-              <span className="text-xs sm:text-sm text-muted-foreground whitespace-nowrap">Hasta:</span>
+              <span className="text-xs sm:text-sm text-muted-foreground whitespace-nowrap">{t.housing.filterMaxPrice}:</span>
               <input
                 type="range"
                 min="0"
@@ -95,9 +97,9 @@ export const HousingSearch = () => {
                   <h3 className="text-base sm:text-xl font-bold mb-2 line-clamp-2">{property.title}</h3>
                   <p className="text-sm sm:text-base text-muted-foreground mb-3 sm:mb-4">{property.location}, {property.city}</p>
                   <div className="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm">
-                    <span>{property.area}m²</span>
-                    {property.bedrooms && <span>{property.bedrooms} hab</span>}
-                    {property.bathrooms && <span>{property.bathrooms} baños</span>}
+                    <span>{property.area}{t.housing.area}</span>
+                    {property.bedrooms && <span>{property.bedrooms} {t.housing.bedrooms}</span>}
+                    {property.bathrooms && <span>{property.bathrooms} {t.housing.bathrooms}</span>}
                   </div>
                 </div>
               </div>
@@ -107,7 +109,7 @@ export const HousingSearch = () => {
 
         {filteredProperties.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-xl text-muted-foreground">No se encontraron propiedades con estos filtros.</p>
+            <p className="text-xl text-muted-foreground">{t.housing.noResults}</p>
           </div>
         )}
       </div>

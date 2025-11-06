@@ -1,22 +1,22 @@
 import { useState } from 'react';
 import { Page } from '../types';
+import { useLanguage } from '../contexts/LanguageContext';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Chatbot } from '../components/Chatbot';
 import { HeroSection } from '../components/sections/HeroSection';
 import { PermitSection } from '../components/sections/PermitSection';
 import { HousingSearch } from '../components/sections/HousingSearch';
-// --- NUEVAS IMPORTACIONES ---
 import { SchoolSection } from '../components/sections/SchoolSection';
 import { NeighborhoodSection } from '../components/sections/NeighborhoodSection';
 import { TaxationSection } from '../components/sections/TaxationSection';
 import { SocialSecuritySection } from '../components/sections/SocialSecuritySection';
 import { FaqSection } from '../components/sections/FaqSection';
 import { ContactSection } from '../components/sections/ContactSection';
-// --- FIN DE NUEVAS IMPORTACIONES ---
 
 const Index = () => {
   const [activePage, setActivePage] = useState<Page>('home');
+  const { t } = useLanguage();
 
   const renderPage = () => {
     switch (activePage) {
@@ -44,13 +44,13 @@ const Index = () => {
         return (
           <section className="min-h-screen flex items-center justify-center py-20">
             <div className="text-center">
-              <h2 className="text-4xl font-bold mb-4">Sección en Construcción</h2>
-              <p className="text-xl text-muted-foreground">Esta sección estará disponible pronto.</p>
+              <h2 className="text-4xl font-bold mb-4">{t.common.underConstruction}</h2>
+              <p className="text-xl text-muted-foreground">{t.common.underConstructionText}</p>
               <button
                 onClick={() => setActivePage('home')}
                 className="mt-8 px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary-hover"
               >
-                Volver al Inicio
+                {t.common.backHome}
               </button>
             </div>
           </section>

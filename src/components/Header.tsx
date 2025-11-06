@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Page } from '../types';
-import { NAV_LINKS } from '../constants';
 import { Icon } from './Icon';
+import { LanguageSelector } from './LanguageSelector';
+import { useLanguage } from '../contexts/LanguageContext';
 import logo from '@/assets/logo.png';
 
 interface HeaderProps {
@@ -12,6 +13,19 @@ interface HeaderProps {
 export const Header = ({ activePage, onNavigate }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
+  
+  const navLinks = [
+    { id: 'home' as Page, label: t.nav.home },
+    { id: 'permits' as Page, label: t.nav.permits },
+    { id: 'housing' as Page, label: t.nav.housing },
+    { id: 'schools' as Page, label: t.nav.schools },
+    { id: 'neighborhoods' as Page, label: t.nav.neighborhoods },
+    { id: 'taxation' as Page, label: t.nav.taxation },
+    { id: 'social-security' as Page, label: t.nav.socialSecurity },
+    { id: 'faq' as Page, label: t.nav.faq },
+    { id: 'contact' as Page, label: t.nav.contact },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,8 +59,8 @@ export const Header = ({ activePage, onNavigate }: HeaderProps) => {
             </button>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8">
-              {NAV_LINKS.map((link) => (
+            <nav className="hidden lg:flex items-center space-x-6">
+              {navLinks.map((link) => (
                 <button
                   key={link.id}
                   onClick={() => handleNavClick(link.id)}
@@ -64,13 +78,16 @@ export const Header = ({ activePage, onNavigate }: HeaderProps) => {
               ))}
             </nav>
 
-            {/* CTA Button - Desktop */}
-            <button
-              onClick={() => handleNavClick('contact')}
-              className="hidden lg:block px-6 py-2.5 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary-hover transition-colors shadow-md"
-            >
-              Iniciar Trámite
-            </button>
+            {/* Language Selector & CTA - Desktop */}
+            <div className="hidden lg:flex items-center gap-4">
+              <LanguageSelector />
+              <button
+                onClick={() => handleNavClick('contact')}
+                className="px-6 py-2.5 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary-hover transition-colors shadow-md"
+              >
+                {t.nav.startProcess}
+              </button>
+            </div>
 
             {/* Mobile Menu Button */}
             <button
@@ -89,7 +106,10 @@ export const Header = ({ activePage, onNavigate }: HeaderProps) => {
           <div className="fixed inset-0 bg-black/50" onClick={() => setIsMobileMenuOpen(false)}></div>
           <nav className="fixed top-20 right-0 bottom-0 w-64 bg-white shadow-xl p-6 overflow-y-auto">
             <div className="flex flex-col space-y-4">
-              {NAV_LINKS.map((link) => (
+              <div className="pb-4 border-b border-border">
+                <LanguageSelector />
+              </div>
+              {navLinks.map((link) => (
                 <button
                   key={link.id}
                   onClick={() => handleNavClick(link.id)}
@@ -106,7 +126,7 @@ export const Header = ({ activePage, onNavigate }: HeaderProps) => {
                 onClick={() => handleNavClick('contact')}
                 className="mt-4 px-4 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary-hover transition-colors text-center"
               >
-                Iniciar Trámite
+                {t.nav.startProcess}
               </button>
             </div>
           </nav>

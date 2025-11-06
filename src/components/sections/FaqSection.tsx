@@ -1,5 +1,6 @@
 import { AnimatedDiv } from '../AnimatedDiv';
 import { FAQS } from '../../constants';
+import { useLanguage } from '../../contexts/LanguageContext';
 import {
   Accordion,
   AccordionContent,
@@ -8,15 +9,17 @@ import {
 } from '@/components/ui/accordion';
 
 export const FaqSection = () => {
+  const { t } = useLanguage();
+  
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6">
         <AnimatedDiv className="text-center mb-8 sm:mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
-            Preguntas Frecuentes (FAQ)
+            {t.faq.title}
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-muted-foreground">
-            Respuestas a las dudas más comunes sobre la mudanza a Paraguay.
+            {t.faq.subtitle}
           </p>
         </AnimatedDiv>
 

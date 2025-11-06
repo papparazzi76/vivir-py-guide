@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Page } from '../../types';
+import { useLanguage } from '../../contexts/LanguageContext';
 import heroAsuncion from '@/assets/hero-asuncion.jpg';
 import heroFamily from '@/assets/hero-family.jpg';
 import heroHomes from '@/assets/hero-homes.jpg';
@@ -8,26 +9,27 @@ interface HeroSectionProps {
   onNavigate: (page: Page) => void;
 }
 
-const HERO_SLIDES = [
-  {
-    image: heroAsuncion,
-    title: 'Tu Nueva Vida en Paraguay Comienza Aquí',
-    subtitle: 'Guía completa para expatriados: residencia, vivienda, impuestos y más',
-  },
-  {
-    image: heroFamily,
-    title: 'Bienvenido a tu Hogar en Sudamérica',
-    subtitle: 'Descubre por qué miles de expatriados eligen Paraguay',
-  },
-  {
-    image: heroHomes,
-    title: 'Encuentra tu Lugar Ideal',
-    subtitle: 'Explora propiedades, colegios y barrios en todo Paraguay',
-  },
-];
-
 export const HeroSection = ({ onNavigate }: HeroSectionProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const { t } = useLanguage();
+
+  const HERO_SLIDES = [
+    {
+      image: heroAsuncion,
+      title: t.hero.slide1Title,
+      subtitle: t.hero.slide1Subtitle,
+    },
+    {
+      image: heroFamily,
+      title: t.hero.slide2Title,
+      subtitle: t.hero.slide2Subtitle,
+    },
+    {
+      image: heroHomes,
+      title: t.hero.slide3Title,
+      subtitle: t.hero.slide3Subtitle,
+    },
+  ];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -71,13 +73,13 @@ export const HeroSection = ({ onNavigate }: HeroSectionProps) => {
                 onClick={() => onNavigate('permits')}
                 className="px-6 sm:px-8 py-3 sm:py-4 bg-primary text-primary-foreground rounded-lg font-bold text-base sm:text-lg hover:bg-primary-hover transition-all hover:shadow-glow-red hover:-translate-y-1"
               >
-                Obtener Residencia
+                {t.hero.exploreCTA}
               </button>
               <button
-                onClick={() => onNavigate('housing')}
+                onClick={() => onNavigate('contact')}
                 className="px-6 sm:px-8 py-3 sm:py-4 bg-white/10 text-white border-2 border-white rounded-lg font-bold text-base sm:text-lg hover:bg-white hover:text-py-blue-dark transition-all hover:-translate-y-1 backdrop-blur-sm"
               >
-                Buscar Vivienda
+                {t.hero.contactCTA}
               </button>
             </div>
           </div>

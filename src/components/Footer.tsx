@@ -1,6 +1,6 @@
 import { Page } from '../types';
-import { NAV_LINKS, SOCIAL_LINKS } from '../constants';
 import { Icon } from './Icon';
+import { useLanguage } from '../contexts/LanguageContext';
 import logo from '@/assets/logo.png';
 
 interface FooterProps {
@@ -8,6 +8,22 @@ interface FooterProps {
 }
 
 export const Footer = ({ onNavigate }: FooterProps) => {
+  const { t } = useLanguage();
+  
+  const navLinks = [
+    { id: 'home' as Page, label: t.nav.home },
+    { id: 'permits' as Page, label: t.nav.permits },
+    { id: 'housing' as Page, label: t.nav.housing },
+    { id: 'schools' as Page, label: t.nav.schools },
+    { id: 'neighborhoods' as Page, label: t.nav.neighborhoods },
+  ];
+
+  const socialLinks = {
+    facebook: 'https://facebook.com',
+    instagram: 'https://instagram.com',
+    youtube: 'https://youtube.com',
+  };
+
   return (
     <footer className="bg-py-blue-dark text-white">
       <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
@@ -16,15 +32,15 @@ export const Footer = ({ onNavigate }: FooterProps) => {
           <div>
             <img src={logo} alt="Living Paraguay" className="h-12 w-auto mb-4 brightness-0 invert" />
             <p className="text-gray-300 text-sm">
-              Tu guía completa para establecerte en Paraguay. Información actualizada sobre residencia, impuestos y estilo de vida.
+              {t.footer.company}
             </p>
           </div>
 
           {/* Navegación */}
           <div>
-            <h4 className="font-bold text-lg mb-4">Navegación</h4>
+            <h4 className="font-bold text-lg mb-4">{t.nav.home}</h4>
             <ul className="space-y-2">
-              {NAV_LINKS.slice(0, 5).map((link) => (
+              {navLinks.map((link) => (
                 <li key={link.id}>
                   <button
                     onClick={() => onNavigate(link.id)}
@@ -39,21 +55,21 @@ export const Footer = ({ onNavigate }: FooterProps) => {
 
           {/* Enlaces Legales */}
           <div>
-            <h4 className="font-bold text-lg mb-4">Legal</h4>
+            <h4 className="font-bold text-lg mb-4">{t.footer.legal}</h4>
             <ul className="space-y-2">
               <li>
                 <button className="text-gray-300 hover:text-white transition-colors">
-                  Política de Privacidad
+                  {t.footer.legalPrivacy}
                 </button>
               </li>
               <li>
                 <button className="text-gray-300 hover:text-white transition-colors">
-                  Términos y Condiciones
+                  {t.footer.legalTerms}
                 </button>
               </li>
               <li>
                 <button className="text-gray-300 hover:text-white transition-colors">
-                  Aviso Legal
+                  {t.footer.legalCookies}
                 </button>
               </li>
             </ul>
@@ -61,10 +77,10 @@ export const Footer = ({ onNavigate }: FooterProps) => {
 
           {/* Redes Sociales */}
           <div>
-            <h4 className="font-bold text-lg mb-4">Síguenos</h4>
+            <h4 className="font-bold text-lg mb-4">{t.footer.followUs}</h4>
             <div className="flex space-x-4">
               <a
-                href={SOCIAL_LINKS.facebook}
+                href={socialLinks.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
@@ -72,7 +88,7 @@ export const Footer = ({ onNavigate }: FooterProps) => {
                 <Icon name="facebook" size={20} />
               </a>
               <a
-                href={SOCIAL_LINKS.instagram}
+                href={socialLinks.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
@@ -80,7 +96,7 @@ export const Footer = ({ onNavigate }: FooterProps) => {
                 <Icon name="instagram" size={20} />
               </a>
               <a
-                href={SOCIAL_LINKS.youtube}
+                href={socialLinks.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
@@ -94,7 +110,7 @@ export const Footer = ({ onNavigate }: FooterProps) => {
         {/* Copyright */}
         <div className="border-t border-white/10 pt-8 text-center">
           <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} Living Paraguay. Todos los derechos reservados.
+            {t.footer.copyright}
           </p>
         </div>
       </div>
