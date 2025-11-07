@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { AnimatedDiv } from '../AnimatedDiv';
 import { Icon } from '../Icon';
+import { useLanguage } from '@/contexts/LanguageContext';
 import {
   Accordion,
   AccordionContent,
@@ -35,6 +36,7 @@ interface Deduction {
 }
 
 export const TaxationSection = () => {
+  const { t } = useLanguage();
   // --- Lógica de la Calculadora ---
   const [currencyCode, setCurrencyCode] = useState<Currency['code']>('USD');
   const [income, setIncome] = useState('');
@@ -137,10 +139,10 @@ export const TaxationSection = () => {
       <div className="container mx-auto px-4 sm:px-6">
         <AnimatedDiv className="text-center mb-8 sm:mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
-            Fiscalidad en Paraguay
+            {t.taxation.title}
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Un régimen favorable basado en el Principio de Territorialidad.
+            {t.taxation.subtitle}
           </p>
         </AnimatedDiv>
 
@@ -152,14 +154,12 @@ export const TaxationSection = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3 text-2xl">
                     <Icon name="shield" size={24} className="text-primary" />
-                    Pilar Central: Principio de Territorialidad
+                    {t.taxation.principleTitle}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-lg text-foreground">
-                    Paraguay se rige por el <strong>Principio de la Fuente</strong>.
-                    Esto significa que, en general, solo se gravan las rentas
-                    generadas <strong>dentro</strong> de las fronteras del país.
+                    {t.taxation.principleText}
                   </p>
                   <ul className="mt-4 space-y-2">
                     <li className="flex items-start space-x-3">
@@ -168,10 +168,8 @@ export const TaxationSection = () => {
                         className="text-green-600 mt-1 flex-shrink-0"
                       />
                       <p>
-                        <strong>Impuesto 0% sobre rentas extranjeras:</strong>{' '}
-                        Salarios por trabajo remoto para empleadores extranjeros,
-                        dividendos de empresas foráneas o intereses bancarios en
-                        el exterior no están sujetos a impuestos en Paraguay.
+                        <strong>{t.taxation.principle0Tax}</strong>{' '}
+                        {t.taxation.principle0TaxText}
                       </p>
                     </li>
                   </ul>
@@ -186,49 +184,41 @@ export const TaxationSection = () => {
                   className="bg-white rounded-xl shadow-lg px-6"
                 >
                   <AccordionTrigger className="text-xl font-bold hover:no-underline">
-                    Impuesto a la Renta Personal (IRP)
+                    {t.taxation.irpTitle}
                   </AccordionTrigger>
                   <AccordionContent className="space-y-4 pt-2">
                     <p>
-                      Es el impuesto principal para individuos residentes.
-                      Se divide en dos categorías que se liquidan por separado:
+                      {t.taxation.irpText}
                      </p>
                     <div>
                       <h4 className="font-semibold text-base text-primary">
-                        1. Rentas de Servicios Personales (IRP-RSP)
+                        {t.taxation.irpRSPTitle}
                       </h4>
                       <p className="text-sm text-muted-foreground mb-2">
-                        Grava ingresos por trabajo local (salarios, honorarios).
+                        {t.taxation.irpRSPText}
                       </p>
                       <ul className="list-disc pl-5 text-sm space-y-1">
                         <li>
-                          <strong>Tasas Progresivas:</strong> 8%, 9% y 10% sobre
-                          la renta neta.
+                          <strong>{t.taxation.irpRSPRate}</strong>
                         </li>
                         <li>
-                          <strong>Deducciones:</strong> Se pueden deducir gastos
-                          personales y familiares realizados en el país.
+                          <strong>{t.taxation.irpRSPDeductions}</strong>
                         </li>
                         <li>
-                          <strong>Deducciones Clave para Expat:</strong> Se
-                          permite deducir gastos en <strong>salud</strong> y{' '}
-                          <strong>educación</strong> realizados en el{' '}
-                          <strong>exterior</strong>.
+                          <strong>{t.taxation.irpRSPDeductionsExpat}</strong>
                         </li>
                       </ul>
                     </div>
                     <div>
                       <h4 className="font-semibold text-base text-primary">
-                        2. Rentas y Ganancias del Capital (IRP-RGC)
+                        {t.taxation.irpRGCTitle}
                       </h4>
                       <p className="text-sm text-muted-foreground mb-2">
-                        Grava rentas pasivas de{' '}
-                        <strong>fuente paraguaya</strong> (alquileres, intereses
-                        locales).
+                        {t.taxation.irpRGCText}
                       </p>
                       <ul className="list-disc pl-5 text-sm space-y-1">
                         <li>
-                          <strong>Tasa Única:</strong> 8% sobre la Renta Neta.
+                          <strong>{t.taxation.irpRGCRate}</strong>
                         </li>
                       </ul>
                     </div>
@@ -240,21 +230,17 @@ export const TaxationSection = () => {
                   className="bg-white rounded-xl shadow-lg px-6 mt-4"
                 >
                   <AccordionTrigger className="text-xl font-bold hover:no-underline">
-                    Impuesto al Valor Agregado (IVA)
+                    {t.taxation.ivaTitle}
                   </AccordionTrigger>
                   <AccordionContent className="space-y-4 pt-2">
-                    <p>Es el principal impuesto al consumo[cite: 12].</p>
+                    <p>{t.taxation.ivaText}</p>
                     <ul className="list-disc pl-5 text-sm space-y-1">
-                      <li><strong>Tasa General:</strong> 10%.</li>
+                      <li><strong>{t.taxation.ivaGeneral}</strong></li>
                       <li>
-                        <strong>Tasa Reducida:</strong> 5% para alquileres de
-                        vivienda y ciertos bienes.
+                        <strong>{t.taxation.ivaReduced}</strong>
                       </li>
                       <li>
-                        <strong>¡Clave para Nómadas Digitales!:</strong> La{' '}
-                        <strong>exportación de servicios</strong> (como
-                        consultoría, desarrollo de software, etc.) a clientes del
-                        exterior está <strong>exenta de IVA</strong>.
+                        <strong>{t.taxation.ivaDigitalNomads}</strong>
                       </li>
                     </ul>
                   </AccordionContent>
@@ -265,19 +251,17 @@ export const TaxationSection = () => {
                   className="bg-white rounded-xl shadow-lg px-6 mt-4"
                 >
                   <AccordionTrigger className="text-xl font-bold hover:no-underline">
-                    Impuesto a los Dividendos (IDU)
+                    {t.taxation.iduTitle}
                   </AccordionTrigger>
                   <AccordionContent className="space-y-4 pt-2">
                     <p>
-                      Grava la <strong>distribución</strong> de ganancias de{' '}
-                      <strong>empresas paraguayas</strong> a sus accionistas.
+                      {t.taxation.iduText}
                     </p>
                     <ul className="list-disc pl-5 text-sm space-y-1">
-                      <li><strong>Tasa para Residentes:</strong> 8%.</li>
-                      <li><strong>Tasa para No Residentes:</strong> 15%.</li>
+                      <li><strong>{t.taxation.iduResident}</strong></li>
+                      <li><strong>{t.taxation.iduNonResident}</strong></li>
                       <li>
-                        <strong>Importante:</strong> Este impuesto no aplica a
-                        dividendos recibidos de empresas extranjeras.
+                        <strong>{t.taxation.iduImportant}</strong>
                       </li>
                     </ul>
                   </AccordionContent>
@@ -293,16 +277,15 @@ export const TaxationSection = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3 text-2xl">
                     <Icon name="calculator" size={24} className="text-primary" />
-                    Calculadora IRP
+                    {t.taxation.calculatorTitle}
                   </CardTitle>
                   <CardDescription>
-                    Estima tu IRP por Servicios Personales (RSP). Solo para
-                    fines ilustrativos.
+                    {t.taxation.calculatorSubtitle}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="currency">Moneda</Label>
+                    <Label htmlFor="currency">{t.taxation.currency}</Label>
                     <Select
                       value={currencyCode}
                       onValueChange={(val) =>
@@ -310,7 +293,7 @@ export const TaxationSection = () => {
                       }
                     >
                       <SelectTrigger id="currency">
-                        <SelectValue placeholder="Seleccionar moneda" />
+                        <SelectValue placeholder={t.taxation.currency} />
                       </SelectTrigger>
                       <SelectContent>
                         {CURRENCIES.map((curr) => (
@@ -323,7 +306,7 @@ export const TaxationSection = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="income">Renta Bruta Anual</Label>
+                    <Label htmlFor="income">{t.taxation.annualIncome}</Label>
                     <Input
                       id="income"
                       type="text"
@@ -335,7 +318,7 @@ export const TaxationSection = () => {
 
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <Label>Deducciones</Label>
+                      <Label>{t.taxation.deductions}</Label>
                       <Button
                         type="button"
                         variant="outline"
@@ -343,7 +326,7 @@ export const TaxationSection = () => {
                         onClick={addDeduction}
                       >
                         <Icon name="plus" size={14} className="mr-1" />
-                        Agregar
+                        {t.taxation.addDeduction}
                       </Button>
                     </div>
                     
@@ -351,13 +334,13 @@ export const TaxationSection = () => {
                       {deductions.map((deduction, index) => (
                         <div key={deduction.id} className="flex gap-2">
                           <Input
-                            placeholder="Concepto (ej: Salud)"
+                            placeholder={t.taxation.deductionConcept}
                             value={deduction.concept}
                             onChange={(e) => updateDeduction(deduction.id, 'concept', e.target.value)}
                             className="flex-1"
                           />
                           <Input
-                            placeholder="Monto"
+                            placeholder={t.taxation.deductionAmount}
                             type="text"
                             value={deduction.amount}
                             onChange={(e) => updateDeduction(deduction.id, 'amount', e.target.value)}
@@ -381,19 +364,19 @@ export const TaxationSection = () => {
 
                   <Button onClick={handleCalculate} className="w-full">
                     <Icon name="calculator" size={16} className="mr-2" />
-                    Calcular Impuesto
+                    {t.taxation.calculate}
                   </Button>
                 </CardContent>
 
                 {totalTaxPYG !== null && netIncomePYG !== null && (
                   <CardFooter className="flex flex-col items-start space-y-3 bg-muted/50 pt-6">
                     <h4 className="font-semibold text-lg">
-                      Resultado Estimado:
+                      {t.taxation.resultsTitle}
                     </h4>
                     
                     <div className="w-full flex justify-between items-center text-sm">
                       <span className="text-muted-foreground">
-                        Renta Neta (después de deducciones):
+                        {t.taxation.netIncome}
                       </span>
                       <span className="font-semibold">
                         {formatCurrency(netIncomePYG, currencyCode)}
@@ -404,7 +387,7 @@ export const TaxationSection = () => {
 
                     <div className="w-full flex justify-between items-center">
                       <span className="text-muted-foreground">
-                        Impuesto en PYG:
+                        {t.taxation.taxInPYG}
                       </span>
                       <span className="font-bold text-lg">
                         {formatCurrency(totalTaxPYG, 'PYG')}
@@ -413,7 +396,7 @@ export const TaxationSection = () => {
                     {currencyCode !== 'PYG' && (
                       <div className="w-full flex justify-between items-center">
                         <span className="text-muted-foreground">
-                          Impuesto en {currencyCode}:
+                          {t.taxation.taxIn} {currencyCode}:
                         </span>
                         <span className="font-bold text-lg">
                           {formatCurrency(totalTaxPYG, currencyCode)}
@@ -421,7 +404,7 @@ export const TaxationSection = () => {
                       </div>
                     )}
                     <p className="text-xs text-muted-foreground pt-2">
-                      *Cálculo basado en las tasas progresivas del IRP-RSP. No constituye asesoría fiscal.
+                      {t.taxation.calculatorDisclaimer}
                     </p>
                   </CardFooter>
                 )}
