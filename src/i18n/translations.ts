@@ -176,13 +176,20 @@ export interface Translations {
   socialSecurity: {
     title: string;
     subtitle: string;
+    ipsTitle: string;
+    ipsDescription: string;
     coverageTitle: string;
-    coverageText: string;
+    coverageMedical: string;
+    coveragePension: string;
+    coverageSubsidies: string;
     contributionsTitle: string;
-    contributionsDependentTitle: string;
-    contributionsDependentText: string;
-    contributionsIndependentTitle: string;
-    contributionsIndependentText: string;
+    dependentTitle: string;
+    dependentMandatory: string;
+    dependentEmployee: string;
+    dependentEmployer: string;
+    independentTitle: string;
+    independentVoluntary: string;
+    independentText: string;
     taxBenefitTitle: string;
     taxBenefitText: string;
   };
@@ -191,6 +198,22 @@ export interface Translations {
   faq: {
     title: string;
     subtitle: string;
+    q1: string;
+    a1: string;
+    q2: string;
+    a2: string;
+    q3: string;
+    a3: string;
+    q4: string;
+    a4: string;
+    q5: string;
+    a5: string;
+    q6: string;
+    a6: string;
+    q7: string;
+    a7: string;
+    q8: string;
+    a8: string;
   };
   
   // Contact Section
@@ -407,21 +430,44 @@ export const translations: Record<Language, Translations> = {
       calculatorDisclaimer: '*Cálculo basado en las tasas progresivas del IRP-RSP. No constituye asesoría fiscal.',
     },
     socialSecurity: {
-      title: 'Instituto de Previsión Social (IPS)',
-      subtitle: 'Información sobre el sistema de seguridad social en Paraguay.',
+      title: 'Seguridad Social',
+      subtitle: 'El IPS es el sistema central de seguridad social de Paraguay, que brinda cobertura de salud, jubilación y otros beneficios.',
+      ipsTitle: 'Instituto de Previsión Social (IPS)',
+      ipsDescription: 'El IPS es el sistema central de seguridad social de Paraguay, que brinda cobertura de salud, jubilación y otros beneficios.',
       coverageTitle: 'Cobertura',
-      coverageText: 'El IPS brinda atención médica, jubilaciones, pensiones y subsidios por enfermedad, maternidad y riesgos profesionales.',
+      coverageMedical: 'Atención Médica y Hospitalaria',
+      coveragePension: 'Jubilación y Pensiones',
+      coverageSubsidies: 'Subsidios (Maternidad, Reposo)',
       contributionsTitle: 'Aportes y Afiliación',
-      contributionsDependentTitle: 'Trabajadores en Relación de Dependencia',
-      contributionsDependentText: 'Empleado: 9% del salario | Empleador: 16.5% del salario | Afiliación obligatoria',
-      contributionsIndependentTitle: 'Trabajadores Independientes',
-      contributionsIndependentText: 'Trabajador: 18% de ingresos declarados | Afiliación voluntaria',
+      dependentTitle: 'Trabajadores Dependientes (Asalariados)',
+      dependentMandatory: 'La afiliación es obligatoria.',
+      dependentEmployee: 'Aporte Empleado: 9% del salario.',
+      dependentEmployer: 'Aporte Empleador: 16.5% del salario.',
+      independentTitle: 'Trabajadores Independientes',
+      independentVoluntary: 'La afiliación es voluntaria.',
+      independentText: 'El independiente puede optar por cubrir la totalidad del aporte para acceder a los beneficios.',
       taxBenefitTitle: 'Beneficio Fiscal',
-      taxBenefitText: 'Los aportes al IPS son 100% deducibles del Impuesto a la Renta Personal (IRP), reduciendo tu carga tributaria efectiva.',
+      taxBenefitText: 'Los aportes realizados al IPS son 100% deducibles del Impuesto a la Renta Personal (IRP-RSP).',
     },
     faq: {
-      title: 'Preguntas Frecuentes (FAQ)',
-      subtitle: 'Respuestas a las dudas más comunes sobre la mudanza a Paraguay.',
+      title: 'Preguntas Frecuentes',
+      subtitle: 'Respuestas a las dudas más comunes sobre mudarse a Paraguay',
+      q1: '¿Cuánto tiempo toma obtener la residencia temporal?',
+      a1: 'El proceso de residencia temporal generalmente toma entre 2 a 4 meses, dependiendo de la correcta preparación de documentos y la carga de trabajo de las instituciones. Una vez aprobada, la residencia se otorga por 2 años.',
+      q2: '¿Necesito apostillar todos mis documentos?',
+      a2: 'Sí, todos los documentos emitidos en el extranjero deben llevar la Apostilla de La Haya. Esto incluye certificados de nacimiento, antecedentes penales, certificados de matrimonio, títulos profesionales, entre otros.',
+      q3: '¿Cuánto dinero debo depositar para la residencia?',
+      a3: 'Para la residencia temporal vía general, se requiere demostrar solvencia económica, típicamente mediante un depósito bancario de aproximadamente $5,000 USD. Para la vía inversionista SUACE, los requisitos de inversión son mayores y específicos al tipo de empresa.',
+      q4: '¿Puedo trabajar con residencia temporal?',
+      a4: 'Sí, la residencia temporal te permite trabajar en Paraguay. Sin embargo, necesitarás obtener la Cédula de Identidad Paraguaya para poder firmar contratos laborales formales y abrir cuentas bancarias.',
+      q5: '¿Qué impuestos debo pagar como residente?',
+      a5: 'Paraguay aplica el sistema de renta territorial, lo que significa que solo pagas impuestos por ingresos generados dentro del país. Los principales impuestos son el IRP (Impuesto a la Renta Personal) para empleados y el IVA para independientes. Las tasas son muy competitivas en comparación con otros países de la región.',
+      q6: '¿Es obligatorio el seguro de salud IPS?',
+      a6: 'El IPS es obligatorio para trabajadores en relación de dependencia. Los aportes son compartidos: el empleado aporta el 9% y el empleador el 16.5% del salario. Los trabajadores independientes pueden optar voluntariamente por afiliarse.',
+      q7: '¿Puedo obtener la ciudadanía paraguaya?',
+      a7: 'Sí, después de 3 años de residencia permanente ininterrumpida, puedes solicitar la ciudadanía paraguaya por naturalización. Esto requiere demostrar conocimientos básicos de español o guaraní y aprobación de un examen.',
+      q8: '¿Necesito un traductor público para mis documentos?',
+      a8: 'Sí, todos los documentos en idioma extranjero deben ser traducidos por un Traductor Público matriculado en Paraguay. La traducción debe ser legalizada ante escribano público.',
     },
     contact: {
       title: 'Contáctanos',
@@ -628,21 +674,44 @@ export const translations: Record<Language, Translations> = {
       calculatorDisclaimer: '*Cálculo baseado nas taxas progressivas do IRP-RSP. Não constitui consultoria fiscal.',
     },
     socialSecurity: {
-      title: 'Instituto de Previdência Social (IPS)',
-      subtitle: 'Informações sobre o sistema de previdência social no Paraguai.',
+      title: 'Previdência Social',
+      subtitle: 'O IPS é o sistema central de previdência social do Paraguai, que oferece cobertura de saúde, aposentadoria e outros benefícios.',
+      ipsTitle: 'Instituto de Previsão Social (IPS)',
+      ipsDescription: 'O IPS é o sistema central de previdência social do Paraguai, que oferece cobertura de saúde, aposentadoria e outros benefícios.',
       coverageTitle: 'Cobertura',
-      coverageText: 'O IPS oferece atendimento médico, aposentadorias, pensões e subsídios por doença, maternidade e riscos profissionais.',
+      coverageMedical: 'Atendimento Médico e Hospitalar',
+      coveragePension: 'Aposentadoria e Pensões',
+      coverageSubsidies: 'Subsídios (Maternidade, Repouso)',
       contributionsTitle: 'Contribuições e Afiliação',
-      contributionsDependentTitle: 'Trabalhadores em Regime de Dependência',
-      contributionsDependentText: 'Empregado: 9% do salário | Empregador: 16,5% do salário | Afiliação obrigatória',
-      contributionsIndependentTitle: 'Trabalhadores Independentes',
-      contributionsIndependentText: 'Trabalhador: 18% da renda declarada | Afiliação voluntária',
+      dependentTitle: 'Trabalhadores Dependentes (Assalariados)',
+      dependentMandatory: 'A afiliação é obrigatória.',
+      dependentEmployee: 'Contribuição Empregado: 9% do salário.',
+      dependentEmployer: 'Contribuição Empregador: 16,5% do salário.',
+      independentTitle: 'Trabalhadores Independentes',
+      independentVoluntary: 'A afiliação é voluntária.',
+      independentText: 'O independente pode optar por cobrir a totalidade da contribuição para acessar os benefícios.',
       taxBenefitTitle: 'Benefício Fiscal',
-      taxBenefitText: 'As contribuições ao IPS são 100% dedutíveis do Imposto de Renda Pessoal (IRP), reduzindo sua carga tributária efetiva.',
+      taxBenefitText: 'As contribuições realizadas ao IPS são 100% dedutíveis do Imposto de Renda Pessoal (IRP-RSP).',
     },
     faq: {
-      title: 'Perguntas Frequentes (FAQ)',
-      subtitle: 'Respostas às dúvidas mais comuns sobre a mudança para o Paraguai.',
+      title: 'Perguntas Frequentes',
+      subtitle: 'Respostas às dúvidas mais comuns sobre mudar-se para o Paraguai',
+      q1: 'Quanto tempo leva para obter a residência temporária?',
+      a1: 'O processo de residência temporária geralmente leva entre 2 a 4 meses, dependendo da preparação correta dos documentos e da carga de trabalho das instituições. Uma vez aprovada, a residência é concedida por 2 anos.',
+      q2: 'Preciso apostilar todos os meus documentos?',
+      a2: 'Sim, todos os documentos emitidos no exterior devem ter o Apostilamento de Haia. Isso inclui certidões de nascimento, antecedentes criminais, certidões de casamento, diplomas profissionais, entre outros.',
+      q3: 'Quanto dinheiro devo depositar para a residência?',
+      a3: 'Para a residência temporária via geral, é necessário demonstrar solvência econômica, tipicamente através de um depósito bancário de aproximadamente $5.000 USD. Para a via investidor SUACE, os requisitos de investimento são maiores e específicos ao tipo de empresa.',
+      q4: 'Posso trabalhar com residência temporária?',
+      a4: 'Sim, a residência temporária permite trabalhar no Paraguai. No entanto, você precisará obter a Cédula de Identidade Paraguaia para poder assinar contratos de trabalho formais e abrir contas bancárias.',
+      q5: 'Que impostos devo pagar como residente?',
+      a5: 'O Paraguai aplica o sistema de renda territorial, o que significa que você só paga impostos sobre rendas geradas dentro do país. Os principais impostos são o IRP (Imposto de Renda Pessoal) para empregados e o IVA para independentes. As taxas são muito competitivas em comparação com outros países da região.',
+      q6: 'O seguro de saúde IPS é obrigatório?',
+      a6: 'O IPS é obrigatório para trabalhadores em relação de dependência. As contribuições são compartilhadas: o empregado contribui com 9% e o empregador com 16,5% do salário. Os trabalhadores independentes podem optar voluntariamente por se afiliar.',
+      q7: 'Posso obter a cidadania paraguaia?',
+      a7: 'Sim, após 3 anos de residência permanente ininterrupta, você pode solicitar a cidadania paraguaia por naturalização. Isso requer demonstrar conhecimentos básicos de espanhol ou guarani e aprovação em um exame.',
+      q8: 'Preciso de um tradutor público para meus documentos?',
+      a8: 'Sim, todos os documentos em idioma estrangeiro devem ser traduzidos por um Tradutor Público registrado no Paraguai. A tradução deve ser legalizada perante tabelião público.',
     },
     contact: {
       title: 'Entre em Contato',
