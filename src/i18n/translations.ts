@@ -282,7 +282,7 @@ export const translations: Record<Language, Translations> = {
       socialSecurity: 'Seguridad Social',
       faq: 'FAQ',
       contact: 'Contacto',
-      startProcess: 'Iniciar Trámite',
+      startProcess: 'Iniciar Consulta',
     },
     hero: {
       slide1Title: 'Tu Nueva Vida en Paraguay Comienza Aquí',
@@ -526,7 +526,7 @@ export const translations: Record<Language, Translations> = {
       socialSecurity: 'Previdência Social',
       faq: 'FAQ',
       contact: 'Contato',
-      startProcess: 'Iniciar Processo',
+      startProcess: 'Iniciar Consulta',
     },
     hero: {
       slide1Title: 'Sua Nova Vida no Paraguai Começa Aqui',
