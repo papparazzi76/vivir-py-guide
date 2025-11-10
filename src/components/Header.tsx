@@ -66,13 +66,13 @@ export const Header = ({ activePage, onNavigate }: HeaderProps) => {
                   onClick={() => handleNavClick(link.id)}
                   className={`relative font-medium transition-colors ${
                     activePage === link.id
-                      ? 'text-py-red'
-                      : 'text-white hover:text-py-red'
+                      ? 'text-primary'
+                      : 'text-foreground hover:text-primary'
                   }`}
                 >
                   {link.label}
                   {activePage === link.id && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-py-red"></span>
+                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"></span>
                   )}
                 </button>
               ))}
@@ -92,7 +92,7 @@ export const Header = ({ activePage, onNavigate }: HeaderProps) => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-white hover:text-py-red transition-colors"
+              className="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
             >
               <Icon name={isMobileMenuOpen ? 'close' : 'menu'} size={28} />
             </button>
