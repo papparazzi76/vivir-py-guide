@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Page } from '../../types';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { PlayCircle } from 'lucide-react';
 import heroAsuncion from '@/assets/hero-asuncion.jpg';
 import heroFamily from '@/assets/hero-family.jpg';
 import heroHomes from '@/assets/hero-homes.jpg';
@@ -83,6 +84,24 @@ export const HeroSection = ({ onNavigate }: HeroSectionProps) => {
               </button>
             </div>
           </div>
+        </div>
+
+        {/* Video Play Button */}
+        <div className="absolute right-8 sm:right-12 md:right-16 top-1/2 transform -translate-y-1/2">
+          <a
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center justify-center"
+          >
+            <div className="relative">
+              <PlayCircle 
+                className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 text-white transition-all duration-300 group-hover:text-py-red group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(230,0,0,0.8)] cursor-pointer" 
+                strokeWidth={1.5}
+              />
+              <div className="absolute inset-0 bg-white/0 rounded-full group-hover:bg-white/10 transition-all duration-300 group-hover:scale-125"></div>
+            </div>
+          </a>
         </div>
       </div>
 
