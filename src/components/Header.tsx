@@ -45,7 +45,7 @@ export const Header = ({ activePage, onNavigate }: HeaderProps) => {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'backdrop-blur-glass shadow-md' : 'bg-white/90'
+          isScrolled ? 'backdrop-blur-glass shadow-md' : 'bg-transparent'
         }`}
       >
         <div className="container mx-auto px-4 sm:px-6">
