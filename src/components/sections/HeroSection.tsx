@@ -83,11 +83,29 @@ export const HeroSection = ({ onNavigate }: HeroSectionProps) => {
                 {t.hero.contactCTA}
               </button>
             </div>
+
+            {/* Video Play Button - Mobile */}
+            <div className="flex justify-center mt-6 sm:hidden animate-fade-in" style={{ animationDelay: '0.6s' }}>
+              <a
+                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-center"
+              >
+                <div className="relative">
+                  <PlayCircle 
+                    className="w-16 h-16 text-white transition-all duration-300 group-hover:text-py-red group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(230,0,0,0.8)] cursor-pointer" 
+                    strokeWidth={1.5}
+                  />
+                  <div className="absolute inset-0 bg-white/0 rounded-full group-hover:bg-white/10 transition-all duration-300 group-hover:scale-125"></div>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
 
-        {/* Video Play Button */}
-        <div className="absolute right-8 sm:right-12 md:right-16 top-1/2 transform -translate-y-1/2">
+        {/* Video Play Button - Desktop */}
+        <div className="hidden sm:block absolute right-8 sm:right-12 md:right-16 top-1/2 transform -translate-y-1/2">
           <a
             href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             target="_blank"
