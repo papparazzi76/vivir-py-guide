@@ -1,10 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Page } from '../../types';
 import { useLanguage } from '../../contexts/LanguageContext';
-import { PlayCircle } from 'lucide-react';
+import { PlayCircle, X } from 'lucide-react';
 import heroAsuncion from '@/assets/hero-asuncion.jpg';
 import heroFamily from '@/assets/hero-family.jpg';
 import heroHomes from '@/assets/hero-homes.jpg';
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+} from '@/components/ui/dialog';
 
 interface HeroSectionProps {
   onNavigate: (page: Page) => void;
@@ -12,6 +17,7 @@ interface HeroSectionProps {
 
 export const HeroSection = ({ onNavigate }: HeroSectionProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
   const { t } = useLanguage();
 
   const HERO_SLIDES = [
@@ -86,11 +92,10 @@ export const HeroSection = ({ onNavigate }: HeroSectionProps) => {
 
             {/* Video Play Button - Mobile */}
             <div className="flex justify-center mt-6 sm:hidden animate-fade-in" style={{ animationDelay: '0.6s' }}>
-              <a
-                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => setIsVideoOpen(true)}
                 className="group flex items-center justify-center"
+                aria-label="Reproducir video"
               >
                 <div className="relative">
                   <PlayCircle 
@@ -99,18 +104,17 @@ export const HeroSection = ({ onNavigate }: HeroSectionProps) => {
                   />
                   <div className="absolute inset-0 bg-white/0 rounded-full group-hover:bg-white/10 transition-all duration-300 group-hover:scale-125"></div>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
         </div>
 
         {/* Video Play Button - Desktop */}
         <div className="hidden sm:block absolute right-8 sm:right-12 md:right-16 top-1/2 transform -translate-y-1/2">
-          <a
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => setIsVideoOpen(true)}
             className="group flex items-center justify-center"
+            aria-label="Reproducir video"
           >
             <div className="relative">
               <PlayCircle 
@@ -119,7 +123,7 @@ export const HeroSection = ({ onNavigate }: HeroSectionProps) => {
               />
               <div className="absolute inset-0 bg-white/0 rounded-full group-hover:bg-white/10 transition-all duration-300 group-hover:scale-125"></div>
             </div>
-          </a>
+          </button>
         </div>
       </div>
 
@@ -137,6 +141,22 @@ export const HeroSection = ({ onNavigate }: HeroSectionProps) => {
           />
         ))}
       </div>
+
+      {/* Video Modal */}
+      <Dialog open={isVideoOpen} onOpenChange={setIsVideoOpen}>
+        <DialogContent className="max-w-4xl w-[95vw] p-0 bg-black border-0">
+          <DialogTitle className="sr-only">Video de YouTube</DialogTitle>
+          <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+            <iframe
+              className="absolute top-0 left-0 w-full h-full"
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+              title="YouTube video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
