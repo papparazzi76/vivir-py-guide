@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Page } from '../../types';
 import { useLanguage } from '../../contexts/LanguageContext';
-import { PlayCircle, X } from 'lucide-react';
+import { PlayCircle, Loader2 } from 'lucide-react';
 import heroAsuncion from '@/assets/hero-asuncion.jpg';
 import heroFamily from '@/assets/hero-family.jpg';
 import heroHomes from '@/assets/hero-homes.jpg';
@@ -18,7 +18,13 @@ interface HeroSectionProps {
 export const HeroSection = ({ onNavigate }: HeroSectionProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [isVideoLoading, setIsVideoLoading] = useState(true);
   const { t } = useLanguage();
+
+  const handleOpenVideo = () => {
+    setIsVideoLoading(true);
+    setIsVideoOpen(true);
+  };
 
   const HERO_SLIDES = [
     {
@@ -93,7 +99,7 @@ export const HeroSection = ({ onNavigate }: HeroSectionProps) => {
             {/* Video Play Button - Mobile */}
             <div className="flex justify-center mt-6 sm:hidden animate-fade-in" style={{ animationDelay: '0.6s' }}>
               <button
-                onClick={() => setIsVideoOpen(true)}
+                onClick={handleOpenVideo}
                 className="group flex items-center justify-center"
                 aria-label="Reproducir video"
               >
@@ -112,7 +118,7 @@ export const HeroSection = ({ onNavigate }: HeroSectionProps) => {
         {/* Video Play Button - Desktop */}
         <div className="hidden sm:block absolute right-8 sm:right-12 md:right-16 top-1/2 transform -translate-y-1/2">
           <button
-            onClick={() => setIsVideoOpen(true)}
+            onClick={handleOpenVideo}
             className="group flex items-center justify-center"
             aria-label="Reproducir video"
           >
@@ -146,13 +152,23 @@ export const HeroSection = ({ onNavigate }: HeroSectionProps) => {
       <Dialog open={isVideoOpen} onOpenChange={setIsVideoOpen}>
         <DialogContent className="max-w-4xl w-[95vw] p-0 bg-black border-0 rounded-2xl overflow-hidden shadow-[0_0_60px_rgba(230,0,0,0.3)]">
           <DialogTitle className="sr-only">Video de YouTube</DialogTitle>
-          <div className="relative w-full animate-fade-in" style={{ paddingBottom: '56.25%', animationDelay: '0.2s' }}>
+          <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+            {/* Loading Spinner */}
+            {isVideoLoading && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black z-10 animate-fade-in">
+                <div className="flex flex-col items-center gap-4">
+                  <Loader2 className="w-12 h-12 text-primary animate-spin" />
+                  <p className="text-white/70 text-sm animate-pulse">Cargando video...</p>
+                </div>
+              </div>
+            )}
             <iframe
-              className="absolute top-0 left-0 w-full h-full rounded-2xl"
+              className={`absolute top-0 left-0 w-full h-full rounded-2xl transition-opacity duration-500 ${isVideoLoading ? 'opacity-0' : 'opacity-100'}`}
               src={isVideoOpen ? "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" : ""}
               title="YouTube video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
+              onLoad={() => setIsVideoLoading(false)}
             />
           </div>
         </DialogContent>
