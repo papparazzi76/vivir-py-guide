@@ -144,12 +144,12 @@ export const HeroSection = ({ onNavigate }: HeroSectionProps) => {
 
       {/* Video Modal */}
       <Dialog open={isVideoOpen} onOpenChange={setIsVideoOpen}>
-        <DialogContent className="max-w-4xl w-[95vw] p-0 bg-black border-0">
+        <DialogContent className="max-w-4xl w-[95vw] p-0 bg-black border-0 rounded-2xl overflow-hidden shadow-[0_0_60px_rgba(230,0,0,0.3)]">
           <DialogTitle className="sr-only">Video de YouTube</DialogTitle>
-          <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+          <div className="relative w-full animate-fade-in" style={{ paddingBottom: '56.25%', animationDelay: '0.2s' }}>
             <iframe
-              className="absolute top-0 left-0 w-full h-full"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+              className="absolute top-0 left-0 w-full h-full rounded-2xl"
+              src={isVideoOpen ? "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" : ""}
               title="YouTube video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
