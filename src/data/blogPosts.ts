@@ -27,4 +27,13 @@ export const blogPosts: BlogPost[] = [
     category: 'Trámites',
     author: 'Living Paraguay',
   },
+  {
+    id: 'villa-morra-vs-carmelitas-barrios-asuncion',
+    title: 'Villa Morra vs Carmelitas: Comparativa de los Mejores Barrios de Asunción',
+    excerpt: 'Análisis detallado de los dos barrios más exclusivos de Asunción: ubicación, precios, seguridad, servicios y calidad de vida. Descubre cuál se adapta mejor a tu estilo.',
+    date: '2025-11-25',
+    readTime: '10 min',
+    category: 'Vivienda',
+    author: 'Living Paraguay',
+  },
 ];
