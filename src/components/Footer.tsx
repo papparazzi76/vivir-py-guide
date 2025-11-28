@@ -1,21 +1,17 @@
-import { Page } from '../types';
+import { Link } from 'react-router-dom';
 import { Icon } from './Icon';
 import { useLanguage } from '../contexts/LanguageContext';
 import logo from '@/assets/logo.png';
 
-interface FooterProps {
-  onNavigate: (page: Page) => void;
-}
-
-export const Footer = ({ onNavigate }: FooterProps) => {
+export const Footer = () => {
   const { t } = useLanguage();
   
   const navLinks = [
-    { id: 'home' as Page, label: t.nav.home },
-    { id: 'permits' as Page, label: t.nav.permits },
-    { id: 'housing' as Page, label: t.nav.housing },
-    { id: 'schools' as Page, label: t.nav.schools },
-    { id: 'neighborhoods' as Page, label: t.nav.neighborhoods },
+    { path: '/', label: t.nav.home },
+    { path: '/permits', label: t.nav.permits },
+    { path: '/housing', label: t.nav.housing },
+    { path: '/schools', label: t.nav.schools },
+    { path: '/neighborhoods', label: t.nav.neighborhoods },
   ];
 
   const socialLinks = {
@@ -41,13 +37,13 @@ export const Footer = ({ onNavigate }: FooterProps) => {
             <h4 className="font-bold text-lg mb-4">{t.nav.home}</h4>
             <ul className="space-y-2">
               {navLinks.map((link) => (
-                <li key={link.id}>
-                  <button
-                    onClick={() => onNavigate(link.id)}
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     {link.label}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>

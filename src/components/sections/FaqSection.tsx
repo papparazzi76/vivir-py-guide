@@ -1,5 +1,6 @@
 import { AnimatedDiv } from '../AnimatedDiv';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { Helmet } from 'react-helmet-async';
 import {
   Accordion,
   AccordionContent,
@@ -20,9 +21,30 @@ export const FaqSection = () => {
     { question: t.faq.q7, answer: t.faq.a7 },
     { question: t.faq.q8, answer: t.faq.a8 },
   ];
+
+  // JSON-LD structured data for FAQ rich snippets
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
   
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-background">
+    <>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      </Helmet>
+      
+      <section className="py-12 sm:py-16 lg:py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6">
         <AnimatedDiv className="text-center mb-8 sm:mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
@@ -51,5 +73,6 @@ export const FaqSection = () => {
         </AnimatedDiv>
       </div>
     </section>
+    </>
   );
 };
