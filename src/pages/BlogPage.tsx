@@ -1,6 +1,6 @@
 import { Layout } from '../components/Layout';
 import { Link } from 'react-router-dom';
-import { Calendar, Clock, ArrowRight, FileText, Stamp } from 'lucide-react';
+import { Calendar, Clock, ArrowRight, FileText, Stamp, MapPin } from 'lucide-react';
 import { AnimatedDiv } from '../components/AnimatedDiv';
 import { blogPosts } from '../data/blogPosts';
 
@@ -11,6 +11,8 @@ const BlogPage = () => {
         return <FileText className="w-5 h-5" />;
       case 'Trámites':
         return <Stamp className="w-5 h-5" />;
+      case 'Vivienda':
+        return <MapPin className="w-5 h-5" />;
       default:
         return <FileText className="w-5 h-5" />;
     }
@@ -22,6 +24,8 @@ const BlogPage = () => {
         return 'from-primary/20 to-primary/10';
       case 'Trámites':
         return 'from-blue-500/20 to-blue-500/10';
+      case 'Vivienda':
+        return 'from-green-500/20 to-green-500/10';
       default:
         return 'from-primary/20 to-primary/10';
     }
@@ -33,6 +37,8 @@ const BlogPage = () => {
         return '₲';
       case 'Trámites':
         return '📋';
+      case 'Vivienda':
+        return '🏘️';
       default:
         return '📄';
     }

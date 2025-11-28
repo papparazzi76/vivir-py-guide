@@ -1,14 +1,12 @@
-// This file contains the original taxation blog post content
-// Extracted from BlogPostPage.tsx for better organization
 import { Link } from 'react-router-dom';
 import { Layout } from '../../components/Layout';
-import { Calendar, Clock, ArrowLeft, Share2, ArrowRight } from 'lucide-react';
+import { Calendar, Clock, ArrowLeft, Share2, ArrowRight, MapPin, DollarSign, Shield, ShoppingBag, School, Utensils } from 'lucide-react';
 import { AnimatedDiv } from '../../components/AnimatedDiv';
 import { Helmet } from 'react-helmet-async';
 import { blogPosts } from '../../data/blogPosts';
 
-const TaxationBlogPost = () => {
-  const post = blogPosts.find(p => p.id === 'impuestos-paraguay-sistema-territorial')!;
+const VillaMorraVsCarmelitasPage = () => {
+  const post = blogPosts.find(p => p.id === 'villa-morra-vs-carmelitas-barrios-asuncion')!;
 
   return (
     <Layout
@@ -60,7 +58,7 @@ const TaxationBlogPost = () => {
 
           <AnimatedDiv>
             <div className="mb-6">
-              <span className="px-3 py-1 bg-primary/10 text-primary rounded-full font-semibold text-sm">
+              <span className="px-3 py-1 bg-green-500/10 text-green-600 dark:text-green-400 rounded-full font-semibold text-sm">
                 {post.category}
               </span>
             </div>
@@ -91,10 +89,10 @@ const TaxationBlogPost = () => {
 
           {/* Featured Image */}
           <AnimatedDiv delay={100} className="mb-12">
-            <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl overflow-hidden relative">
+            <div className="aspect-video bg-gradient-to-br from-green-500/20 to-green-500/10 rounded-2xl overflow-hidden relative">
               <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyMTMsNDMsMzAsMC4xKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-50"></div>
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-9xl font-bold text-primary/30">₲</span>
+                <span className="text-9xl font-bold opacity-20">🏘️</span>
               </div>
             </div>
           </AnimatedDiv>
@@ -102,21 +100,14 @@ const TaxationBlogPost = () => {
 
         {/* Content */}
         <div className="container mx-auto px-4 sm:px-6 max-w-3xl">
-          <AnimatedDiv delay={200}>
+          <AnimatedDiv delay={200} className="prose prose-lg max-w-none">
             <p className="text-xl text-center text-muted-foreground mb-8">
-              El contenido completo sobre impuestos está disponible en la sección dedicada con la calculadora fiscal interactiva.
+              Comparativa completa entre los dos barrios más exclusivos de Asunción.
             </p>
-            <div className="text-center space-y-4">
-              <Link 
-                to="/taxation" 
-                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-lg font-bold hover:bg-primary-hover transition-colors text-lg"
-              >
-                Ver Guía Completa de Impuestos
-                <ArrowRight className="w-5 h-5" />
+            <div className="text-center">
+              <Link to="/neighborhoods" className="text-primary hover:underline text-lg font-semibold">
+                → Explorar todos los barrios de Asunción
               </Link>
-              <p className="text-sm text-muted-foreground">
-                Incluye: Sistema territorial explicado, calculadora IRP, comparativa internacional y estrategias de optimización fiscal
-              </p>
             </div>
           </AnimatedDiv>
         </div>
@@ -125,4 +116,4 @@ const TaxationBlogPost = () => {
   );
 };
 
-export default TaxationBlogPost;
+export default VillaMorraVsCarmelitasPage;

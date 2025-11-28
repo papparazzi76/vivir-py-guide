@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { blogPosts } from '../data/blogPosts';
 import TaxationBlogPost from './blog/TaxationBlogPost';
 import ApostillarDocumentosPage from './blog/ApostillarDocumentosPage';
+import VillaMorraVsCarmelitasPage from './blog/VillaMorraVsCarmelitasPage';
 
 const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -19,6 +20,10 @@ const BlogPostPage = () => {
 
   if (slug === 'apostillar-documentos-paraguay') {
     return <ApostillarDocumentosPage />;
+  }
+
+  if (slug === 'villa-morra-vs-carmelitas-barrios-asuncion') {
+    return <VillaMorraVsCarmelitasPage />;
   }
 
   return null;
