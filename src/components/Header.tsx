@@ -1,31 +1,32 @@
 import { useState, useEffect } from 'react';
-import { Page } from '../types';
+import { Link, useLocation } from 'react-router-dom';
 import { Icon } from './Icon';
 import { LanguageSelector } from './LanguageSelector';
 import { useLanguage } from '../contexts/LanguageContext';
 import logo from '@/assets/logo.png';
 
-interface HeaderProps {
-  activePage: Page;
-  onNavigate: (page: Page) => void;
-}
-
-export const Header = ({ activePage, onNavigate }: HeaderProps) => {
+export const Header = () => {
+  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { t } = useLanguage();
   
   const navLinks = [
-    { id: 'home' as Page, label: t.nav.home },
-    { id: 'permits' as Page, label: t.nav.permits },
-    { id: 'housing' as Page, label: t.nav.housing },
-    { id: 'schools' as Page, label: t.nav.schools },
-    { id: 'neighborhoods' as Page, label: t.nav.neighborhoods },
-    { id: 'taxation' as Page, label: t.nav.taxation },
-    { id: 'social-security' as Page, label: t.nav.socialSecurity },
-    { id: 'faq' as Page, label: t.nav.faq },
-    { id: 'contact' as Page, label: t.nav.contact },
+    { path: '/', label: t.nav.home },
+    { path: '/permits', label: t.nav.permits },
+    { path: '/housing', label: t.nav.housing },
+    { path: '/schools', label: t.nav.schools },
+    { path: '/neighborhoods', label: t.nav.neighborhoods },
+    { path: '/taxation', label: t.nav.taxation },
+    { path: '/social-security', label: t.nav.socialSecurity },
+    { path: '/faq', label: t.nav.faq },
+    { path: '/contact', label: t.nav.contact },
   ];
+
+  const isActivePath = (path: string) => {
+    if (path === '/') return location.pathname === '/';
+    return location.pathname.startsWith(path);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,8 +37,7 @@ export const Header = ({ activePage, onNavigate }: HeaderProps) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (page: Page) => {
-    onNavigate(page);
+  const handleMobileMenuClose = () => {
     setIsMobileMenuOpen(false);
   };
 
@@ -51,42 +51,42 @@ export const Header = ({ activePage, onNavigate }: HeaderProps) => {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
-            <button
-              onClick={() => handleNavClick('home')}
+            <Link
+              to="/"
               className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
             >
               <img src={logo} alt="Living Paraguay" className="h-10 sm:h-12 w-auto" />
-            </button>
+            </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-6">
               {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => handleNavClick(link.id)}
+                <Link
+                  key={link.path}
+                  to={link.path}
                   className={`relative font-medium transition-colors ${
-                    activePage === link.id
+                    isActivePath(link.path)
                       ? 'text-primary'
                       : 'text-foreground hover:text-primary'
                   }`}
                 >
                   {link.label}
-                  {activePage === link.id && (
+                  {isActivePath(link.path) && (
                     <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"></span>
                   )}
-                </button>
+                </Link>
               ))}
             </nav>
 
             {/* Language Selector & CTA - Desktop */}
             <div className="hidden lg:flex items-center gap-4">
               <LanguageSelector />
-              <button
-                onClick={() => handleNavClick('contact')}
+              <Link
+                to="/contact"
                 className="px-6 py-2.5 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary-hover transition-colors shadow-md"
               >
                 {t.nav.startProcess}
-              </button>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -110,24 +110,26 @@ export const Header = ({ activePage, onNavigate }: HeaderProps) => {
                 <LanguageSelector />
               </div>
               {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => handleNavClick(link.id)}
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={handleMobileMenuClose}
                   className={`text-left px-4 py-3 rounded-lg font-medium transition-colors ${
-                    activePage === link.id
+                    isActivePath(link.path)
                       ? 'bg-primary text-primary-foreground'
                       : 'text-foreground hover:bg-muted'
                   }`}
                 >
                   {link.label}
-                </button>
+                </Link>
               ))}
-              <button
-                onClick={() => handleNavClick('contact')}
-                className="mt-4 px-4 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary-hover transition-colors text-center"
+              <Link
+                to="/contact"
+                onClick={handleMobileMenuClose}
+                className="mt-4 px-4 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary-hover transition-colors text-center block"
               >
                 {t.nav.startProcess}
-              </button>
+              </Link>
             </div>
           </nav>
         </div>
