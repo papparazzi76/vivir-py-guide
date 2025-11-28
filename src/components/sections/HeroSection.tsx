@@ -64,8 +64,9 @@ export const HeroSection = ({ onNavigate }: HeroSectionProps) => {
         >
           <img
             src={slide.image}
-            alt={`Hero ${index + 1}`}
+            alt={`Vista de ${index === 0 ? 'Asunción' : index === 1 ? 'familia en Paraguay' : 'propiedades en Paraguay'}`}
             className="w-full h-full object-cover"
+            loading={index === 0 ? 'eager' : 'lazy'}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-py-blue-dark/70 via-py-blue-dark/50 to-py-blue-dark/70"></div>
         </div>

@@ -82,7 +82,12 @@ export const HousingSearch = () => {
           {filteredProperties.map((property, idx) => (
             <AnimatedDiv key={property.id} delay={idx * 50}>
               <div className="bg-white rounded-xl overflow-hidden shadow-lg hover-lift">
-                <img src={property.image} alt={property.title} className="w-full h-48 object-cover" />
+                <img 
+                  src={property.image} 
+                  alt={`${property.title} en ${property.location}, ${property.city}`} 
+                  className="w-full h-48 object-cover"
+                  loading="lazy"
+                />
                 <div className="p-4 sm:p-6">
                   <div className="flex items-center justify-between mb-2">
                     <span className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold ${
