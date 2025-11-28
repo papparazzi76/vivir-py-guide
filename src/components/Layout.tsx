@@ -28,11 +28,13 @@ export const Layout = ({ children, title, description, canonical, noHeaderPaddin
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonical || `${baseUrl}${window.location.pathname}`} />
+        <meta property="og:image" content={`${baseUrl}/og-image.jpg`} />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={fullTitle} />
         <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={`${baseUrl}/og-image.jpg`} />
         
         {/* Language */}
         <html lang="es" />

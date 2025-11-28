@@ -19,6 +19,7 @@ export const Header = () => {
     { path: '/neighborhoods', label: t.nav.neighborhoods },
     { path: '/taxation', label: t.nav.taxation },
     { path: '/social-security', label: t.nav.socialSecurity },
+    { path: '/blog', label: 'Blog' },
     { path: '/faq', label: t.nav.faq },
     { path: '/contact', label: t.nav.contact },
   ];

@@ -12,6 +12,7 @@ export const Footer = () => {
     { path: '/housing', label: t.nav.housing },
     { path: '/schools', label: t.nav.schools },
     { path: '/neighborhoods', label: t.nav.neighborhoods },
+    { path: '/blog', label: 'Blog' },
   ];
 
   const socialLinks = {
