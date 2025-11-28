@@ -7,6 +7,14 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import { z } from 'zod';
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1, 'El nombre es requerido').max(100, 'El nombre debe tener menos de 100 caracteres'),
+  email: z.string().trim().email('Email inválido').max(255, 'El email debe tener menos de 255 caracteres'),
+  subject: z.string().trim().min(1, 'El asunto es requerido').max(200, 'El asunto debe tener menos de 200 caracteres'),
+  message: z.string().trim().min(10, 'El mensaje debe tener al menos 10 caracteres').max(2000, 'El mensaje debe tener menos de 2000 caracteres'),
+});
 
 export const ContactSection = () => {
   const { t } = useLanguage();
@@ -17,22 +25,42 @@ export const ContactSection = () => {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    setErrors({});
     
-    // Simular llamada a API
-    console.log('Enviando formulario:', formData);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      toast({
-        title: t.contact.formSuccess,
-        description: t.contact.subtitle,
-      });
-    }, 1500);
+    try {
+      const validatedData = contactSchema.parse(formData);
+      setIsSubmitting(true);
+      
+      // Simular llamada a API
+      setTimeout(() => {
+        setIsSubmitting(false);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        toast({
+          title: t.contact.formSuccess,
+          description: t.contact.subtitle,
+        });
+      }, 1500);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const fieldErrors: Record<string, string> = {};
+        error.errors.forEach((err) => {
+          if (err.path[0]) {
+            fieldErrors[err.path[0].toString()] = err.message;
+          }
+        });
+        setErrors(fieldErrors);
+        toast({
+          title: 'Error de validación',
+          description: 'Por favor, corrige los errores en el formulario',
+          variant: 'destructive',
+        });
+      }
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -96,39 +124,51 @@ export const ContactSection = () => {
               <h3 className="text-2xl font-bold mb-6">{t.contact.formTitle}</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
-                  <Input
-                    name="name"
-                    type="text"
-                    placeholder={t.contact.formName}
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                  />
-                  <Input
-                    name="email"
-                    type="email"
-                    placeholder={t.contact.formEmail}
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                  />
+                  <div>
+                    <Input
+                      name="name"
+                      type="text"
+                      placeholder={t.contact.formName}
+                      value={formData.name}
+                      onChange={handleChange}
+                      className={errors.name ? 'border-destructive' : ''}
+                    />
+                    {errors.name && <p className="text-sm text-destructive mt-1">{errors.name}</p>}
+                  </div>
+                  <div>
+                    <Input
+                      name="email"
+                      type="email"
+                      placeholder={t.contact.formEmail}
+                      value={formData.email}
+                      onChange={handleChange}
+                      className={errors.email ? 'border-destructive' : ''}
+                    />
+                    {errors.email && <p className="text-sm text-destructive mt-1">{errors.email}</p>}
+                  </div>
                 </div>
-                <Input
-                  name="subject"
-                  type="text"
-                  placeholder={t.contact.formSubject}
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                />
-                <Textarea
-                  name="message"
-                  placeholder={t.contact.formMessage}
-                  rows={5}
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                />
+                <div>
+                  <Input
+                    name="subject"
+                    type="text"
+                    placeholder={t.contact.formSubject}
+                    value={formData.subject}
+                    onChange={handleChange}
+                    className={errors.subject ? 'border-destructive' : ''}
+                  />
+                  {errors.subject && <p className="text-sm text-destructive mt-1">{errors.subject}</p>}
+                </div>
+                <div>
+                  <Textarea
+                    name="message"
+                    placeholder={t.contact.formMessage}
+                    rows={5}
+                    value={formData.message}
+                    onChange={handleChange}
+                    className={errors.message ? 'border-destructive' : ''}
+                  />
+                  {errors.message && <p className="text-sm text-destructive mt-1">{errors.message}</p>}
+                </div>
                 <Button type="submit" disabled={isSubmitting} className="w-full py-3">
                   {isSubmitting ? t.contact.formSubmitting : t.contact.formSubmit}
                 </Button>
