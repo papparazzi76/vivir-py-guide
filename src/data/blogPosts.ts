@@ -11,6 +11,16 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: 'costo-vida-paraguay-2025-presupuesto-mensual',
+    title: 'Costo de Vida en Paraguay 2025: Presupuesto Mensual Detallado',
+    excerpt: 'Análisis completo del costo de vida en Paraguay con presupuestos mensuales detallados por ciudad. Compara Asunción, Ciudad del Este y Encarnación para planificar tu mudanza.',
+    date: '2025-11-28',
+    readTime: '14 min',
+    category: 'Estilo de Vida',
+    author: 'Living Paraguay',
+    image: '/src/assets/blog-cost-of-living.webp',
+  },
+  {
     id: 'impuestos-paraguay-sistema-territorial',
     title: 'Impuestos en Paraguay: Guía completa del sistema territorial',
     excerpt: 'Descubre cómo funciona el sistema fiscal territorial de Paraguay y por qué es uno de los más atractivos para expatriados e inversores internacionales.',

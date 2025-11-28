@@ -39,6 +39,45 @@ export const Layout = ({ children, title, description, canonical, noHeaderPaddin
         
         {/* Language */}
         <html lang="es" />
+
+        {/* LocalBusiness Schema - Applied to all pages */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "Living Paraguay",
+            "description": "Guía completa para vivir, trabajar e invertir en Paraguay. Información sobre residencia, impuestos, vivienda y calidad de vida.",
+            "url": "https://livingparaguay.com",
+            "logo": "https://livingparaguay.com/og-image.jpg",
+            "image": "https://livingparaguay.com/og-image.jpg",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "PY",
+              "addressRegion": "Asunción",
+              "addressLocality": "Asunción"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "Paraguay"
+            },
+            "serviceType": [
+              "Asesoría de Residencia",
+              "Información Fiscal",
+              "Búsqueda de Vivienda",
+              "Guías de Expatriación"
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "Customer Service",
+              "availableLanguage": ["Spanish", "Portuguese", "English"]
+            },
+            "sameAs": [
+              "https://twitter.com/livingparaguay",
+              "https://facebook.com/livingparaguay",
+              "https://instagram.com/livingparaguay"
+            ]
+          })}
+        </script>
       </Helmet>
       
       <div className="min-h-screen">

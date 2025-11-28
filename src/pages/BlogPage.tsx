@@ -1,11 +1,12 @@
 import { Layout } from '../components/Layout';
 import { Link } from 'react-router-dom';
-import { Calendar, Clock, ArrowRight, FileText, Stamp, MapPin } from 'lucide-react';
+import { Calendar, Clock, ArrowRight, FileText, Stamp, MapPin, Wallet } from 'lucide-react';
 import { AnimatedDiv } from '../components/AnimatedDiv';
 import { blogPosts } from '../data/blogPosts';
 import blogTaxationImage from '@/assets/blog-taxation.webp';
 import blogApostilleImage from '@/assets/blog-apostille.webp';
 import blogNeighborhoodsImage from '@/assets/blog-neighborhoods.webp';
+import blogCostOfLivingImage from '@/assets/blog-cost-of-living.webp';
 
 const BlogPage = () => {
   const getCategoryIcon = (category: string) => {
@@ -16,6 +17,8 @@ const BlogPage = () => {
         return <Stamp className="w-5 h-5" />;
       case 'Vivienda':
         return <MapPin className="w-5 h-5" />;
+      case 'Estilo de Vida':
+        return <Wallet className="w-5 h-5" />;
       default:
         return <FileText className="w-5 h-5" />;
     }
@@ -29,6 +32,8 @@ const BlogPage = () => {
         return 'from-blue-500/20 to-blue-500/10';
       case 'Vivienda':
         return 'from-green-500/20 to-green-500/10';
+      case 'Estilo de Vida':
+        return 'from-purple-500/20 to-purple-500/10';
       default:
         return 'from-primary/20 to-primary/10';
     }
@@ -36,6 +41,8 @@ const BlogPage = () => {
 
   const getBlogImage = (postId: string) => {
     switch (postId) {
+      case 'costo-vida-paraguay-2025-presupuesto-mensual':
+        return blogCostOfLivingImage;
       case 'impuestos-paraguay-sistema-territorial':
         return blogTaxationImage;
       case 'apostillar-documentos-paraguay':

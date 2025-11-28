@@ -3,6 +3,7 @@ import { blogPosts } from '../data/blogPosts';
 import TaxationBlogPost from './blog/TaxationBlogPost';
 import ApostillarDocumentosPage from './blog/ApostillarDocumentosPage';
 import VillaMorraVsCarmelitasPage from './blog/VillaMorraVsCarmelitasPage';
+import CostOfLivingPage from './blog/CostOfLivingPage';
 
 const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -14,6 +15,10 @@ const BlogPostPage = () => {
   }
 
   // Route to specific blog post component based on slug
+  if (slug === 'costo-vida-paraguay-2025-presupuesto-mensual') {
+    return <CostOfLivingPage />;
+  }
+
   if (slug === 'impuestos-paraguay-sistema-territorial') {
     return <TaxationBlogPost />;
   }
