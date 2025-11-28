@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { Calendar, Clock, ArrowRight, FileText, Stamp, MapPin } from 'lucide-react';
 import { AnimatedDiv } from '../components/AnimatedDiv';
 import { blogPosts } from '../data/blogPosts';
+import blogTaxationImage from '@/assets/blog-taxation.webp';
+import blogApostilleImage from '@/assets/blog-apostille.webp';
+import blogNeighborhoodsImage from '@/assets/blog-neighborhoods.webp';
 
 const BlogPage = () => {
   const getCategoryIcon = (category: string) => {
@@ -31,16 +34,16 @@ const BlogPage = () => {
     }
   };
 
-  const getCategoryIcon2 = (category: string) => {
-    switch (category) {
-      case 'Fiscalidad':
-        return '₲';
-      case 'Trámites':
-        return '📋';
-      case 'Vivienda':
-        return '🏘️';
+  const getBlogImage = (postId: string) => {
+    switch (postId) {
+      case 'impuestos-paraguay-sistema-territorial':
+        return blogTaxationImage;
+      case 'apostillar-documentos-paraguay':
+        return blogApostilleImage;
+      case 'villa-morra-vs-carmelitas-barrios-asuncion':
+        return blogNeighborhoodsImage;
       default:
-        return '📄';
+        return blogTaxationImage;
     }
   };
 
@@ -66,11 +69,13 @@ const BlogPage = () => {
               <AnimatedDiv key={post.id} delay={idx * 100}>
                 <Link to={`/blog/${post.id}`} className="group block">
                   <article className="bg-card rounded-xl overflow-hidden shadow-lg hover-lift h-full">
-                    <div className={`aspect-video bg-gradient-to-br ${getCategoryGradient(post.category)} relative overflow-hidden`}>
-                      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyMTMsNDMsMzAsMC4xKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-50"></div>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-6xl font-bold text-primary/30">{getCategoryIcon2(post.category)}</span>
-                      </div>
+                    <div className="aspect-video relative overflow-hidden">
+                      <img 
+                        src={getBlogImage(post.id)} 
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
                     </div>
                     <div className="p-6">
                       <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">

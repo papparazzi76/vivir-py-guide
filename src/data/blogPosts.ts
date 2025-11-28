@@ -6,6 +6,7 @@ export interface BlogPost {
   readTime: string;
   category: string;
   author: string;
+  image: string;
 }
 
 export const blogPosts: BlogPost[] = [
@@ -17,6 +18,7 @@ export const blogPosts: BlogPost[] = [
     readTime: '15 min',
     category: 'Fiscalidad',
     author: 'Living Paraguay',
+    image: '/src/assets/blog-taxation.webp',
   },
   {
     id: 'apostillar-documentos-paraguay',
@@ -26,6 +28,7 @@ export const blogPosts: BlogPost[] = [
     readTime: '12 min',
     category: 'Trámites',
     author: 'Living Paraguay',
+    image: '/src/assets/blog-apostille.webp',
   },
   {
     id: 'villa-morra-vs-carmelitas-barrios-asuncion',
@@ -35,5 +38,6 @@ export const blogPosts: BlogPost[] = [
     readTime: '10 min',
     category: 'Vivienda',
     author: 'Living Paraguay',
+    image: '/src/assets/blog-neighborhoods.webp',
   },
 ];
