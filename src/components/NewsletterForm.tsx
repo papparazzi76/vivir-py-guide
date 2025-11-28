@@ -5,41 +5,40 @@ import { Button } from './ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { z } from 'zod';
+
+const emailSchema = z.object({
+  email: z.string().trim().email('Email inválido').max(255, 'El email debe tener menos de 255 caracteres').toLowerCase(),
+});
 
 export const NewsletterForm = () => {
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   const { toast } = useToast();
   const { t } = useLanguage();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
     
-    if (!email || !email.includes('@')) {
-      toast({
-        title: t.newsletter.errorTitle || "Error",
-        description: t.newsletter.errorInvalid || "Por favor ingresa un email válido",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    setIsLoading(true);
-
     try {
-      const { error } = await supabase
-        .from('newsletter_subscribers')
-        .insert([{ email, source: 'website' }]);
+      const validatedData = emailSchema.parse({ email });
+      setIsLoading(true);
 
-      if (error) {
-        if (error.code === '23505') {
+      const { error: dbError } = await supabase
+        .from('newsletter_subscribers')
+        .insert([{ email: validatedData.email, source: 'website' }]);
+
+      if (dbError) {
+        if (dbError.code === '23505') {
           toast({
             title: t.newsletter.errorTitle || "Error",
             description: t.newsletter.errorExists || "Este email ya está suscrito",
             variant: "destructive",
           });
         } else {
-          throw error;
+          throw dbError;
         }
       } else {
         toast({
@@ -48,13 +47,23 @@ export const NewsletterForm = () => {
         });
         setEmail('');
       }
-    } catch (error) {
-      console.error('Newsletter subscription error:', error);
-      toast({
-        title: t.newsletter.errorTitle || "Error",
-        description: t.newsletter.errorGeneric || "Hubo un error al procesar tu suscripción",
-        variant: "destructive",
-      });
+    } catch (err) {
+      if (err instanceof z.ZodError) {
+        const errorMessage = err.errors[0]?.message || 'Email inválido';
+        setError(errorMessage);
+        toast({
+          title: t.newsletter.errorTitle || "Error",
+          description: errorMessage,
+          variant: "destructive",
+        });
+      } else {
+        console.error('Newsletter subscription error:', err);
+        toast({
+          title: t.newsletter.errorTitle || "Error",
+          description: t.newsletter.errorGeneric || "Hubo un error al procesar tu suscripción",
+          variant: "destructive",
+        });
+      }
     } finally {
       setIsLoading(false);
     }
@@ -76,9 +85,10 @@ export const NewsletterForm = () => {
             placeholder={t.newsletter.placeholder || "tu@email.com"}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+            className={`pl-10 bg-white/10 border-white/20 text-white placeholder:text-gray-400 ${error ? 'border-destructive' : ''}`}
             disabled={isLoading}
           />
+          {error && <p className="text-sm text-destructive mt-1">{error}</p>}
         </div>
         <Button
           type="submit"
