@@ -233,6 +233,21 @@ export interface Translations {
     formSuccess: string;
   };
   
+  // Newsletter
+  newsletter: {
+    title: string;
+    description: string;
+    placeholder: string;
+    subscribe: string;
+    subscribing: string;
+    successTitle: string;
+    successMessage: string;
+    errorTitle: string;
+    errorInvalid: string;
+    errorExists: string;
+    errorGeneric: string;
+  };
+
   // Footer
   footer: {
     company: string;
@@ -484,6 +499,19 @@ export const translations: Record<Language, Translations> = {
       formSubmitting: 'Enviando...',
       formSuccess: 'Mensaje enviado con éxito',
     },
+    newsletter: {
+      title: 'Newsletter',
+      description: 'Recibe actualizaciones sobre Paraguay en tu correo',
+      placeholder: 'tu@email.com',
+      subscribe: 'Suscribirse',
+      subscribing: 'Suscribiendo...',
+      successTitle: '¡Suscripción exitosa!',
+      successMessage: 'Gracias por suscribirte a nuestro newsletter',
+      errorTitle: 'Error',
+      errorInvalid: 'Por favor ingresa un email válido',
+      errorExists: 'Este email ya está suscrito',
+      errorGeneric: 'Hubo un error al procesar tu suscripción',
+    },
     footer: {
       company: 'Empresa',
       companyAbout: 'Sobre Nosotros',
@@ -727,6 +755,19 @@ export const translations: Record<Language, Translations> = {
       formSubmit: 'Enviar Mensagem',
       formSubmitting: 'Enviando...',
       formSuccess: 'Mensagem enviada com sucesso',
+    },
+    newsletter: {
+      title: 'Newsletter',
+      description: 'Receba atualizações sobre o Paraguai no seu email',
+      placeholder: 'seu@email.com',
+      subscribe: 'Inscrever-se',
+      subscribing: 'Inscrevendo...',
+      successTitle: 'Inscrição bem-sucedida!',
+      successMessage: 'Obrigado por se inscrever em nossa newsletter',
+      errorTitle: 'Erro',
+      errorInvalid: 'Por favor, insira um email válido',
+      errorExists: 'Este email já está inscrito',
+      errorGeneric: 'Houve um erro ao processar sua inscrição',
     },
     footer: {
       company: 'Empresa',
