@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { Chatbot } from './Chatbot';
+import { Breadcrumbs } from './Breadcrumbs';
 
 interface LayoutProps {
   children: ReactNode;
@@ -42,7 +43,8 @@ export const Layout = ({ children, title, description, canonical, noHeaderPaddin
       
       <div className="min-h-screen">
         <Header />
-        <main className={noHeaderPadding ? '' : 'pt-16 sm:pt-20'}>
+        {!noHeaderPadding && <div className="pt-16 sm:pt-20"><Breadcrumbs /></div>}
+        <main className={noHeaderPadding ? '' : ''}>
           {children}
         </main>
         <Footer />
