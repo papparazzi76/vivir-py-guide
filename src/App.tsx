@@ -16,6 +16,7 @@ import FaqPage from "./pages/FaqPage";
 import ContactPage from "./pages/ContactPage";
 import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
+import ApostillarDocumentosPage from "./pages/blog/ApostillarDocumentosPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
