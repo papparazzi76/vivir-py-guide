@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Icon } from './Icon';
 import { useLanguage } from '../contexts/LanguageContext';
+import { NewsletterForm } from './NewsletterForm';
 import logo from '@/assets/logo.png';
 
 export const Footer = () => {
@@ -24,7 +25,7 @@ export const Footer = () => {
   return (
     <footer className="bg-py-blue-dark text-white">
       <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 mb-6 sm:mb-8">
           {/* Logo y Descripción */}
           <div>
             <img src={logo} alt="Living Paraguay" className="h-12 w-auto mb-4 brightness-0 invert" />
@@ -101,6 +102,11 @@ export const Footer = () => {
                 <Icon name="youtube" size={20} />
               </a>
             </div>
+          </div>
+
+          {/* Newsletter */}
+          <div>
+            <NewsletterForm />
           </div>
         </div>
 
