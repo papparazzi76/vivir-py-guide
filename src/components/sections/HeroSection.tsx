@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { Page } from '../../types';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { PlayCircle, Loader2 } from 'lucide-react';
-import heroAsuncion from '@/assets/hero-asuncion.jpg';
-import heroFamily from '@/assets/hero-family.jpg';
-import heroHomes from '@/assets/hero-homes.jpg';
+import heroAsuncion from '@/assets/hero-asuncion.webp';
+import heroFamily from '@/assets/hero-family.webp';
+import heroHomes from '@/assets/hero-homes.webp';
 import {
   Dialog,
   DialogContent,
