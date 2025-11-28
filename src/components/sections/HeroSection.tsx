@@ -165,7 +165,7 @@ export const HeroSection = ({ onNavigate }: HeroSectionProps) => {
             )}
             <iframe
               className={`absolute top-0 left-0 w-full h-full rounded-2xl transition-opacity duration-500 ${isVideoLoading ? 'opacity-0' : 'opacity-100'}`}
-              src={isVideoOpen ? "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" : ""}
+              src={isVideoOpen ? "https://www.youtube.com/embed/eHWdZeIsDzo?autoplay=1" : ""}
               title="YouTube video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
