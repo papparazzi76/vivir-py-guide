@@ -68,7 +68,7 @@ export const Header = () => {
                   className={`relative font-medium transition-colors ${
                     isActivePath(link.path)
                       ? 'text-primary'
-                      : 'text-foreground hover:text-primary'
+                      : 'text-white hover:text-primary'
                   }`}
                 >
                   {link.label}
