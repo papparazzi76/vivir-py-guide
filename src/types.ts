@@ -47,6 +47,8 @@ export interface Neighborhood {
   image: string;
   description: string;
   tags: string[];
+  profile: string;
+  highlights: string[];
 }
 
 export interface CostOfLiving {
