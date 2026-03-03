@@ -7,6 +7,8 @@ import blogTaxationImage from '@/assets/blog-taxation.webp';
 import blogApostilleImage from '@/assets/blog-apostille.webp';
 import blogNeighborhoodsImage from '@/assets/blog-neighborhoods.webp';
 import blogCostOfLivingImage from '@/assets/blog-cost-of-living.webp';
+import blogInversionImage from '@/assets/blog-inversion-inmobiliaria.webp';
+import blogMarcoFiscalImage from '@/assets/blog-marco-fiscal-paraguay.webp';
 
 const BlogPage = () => {
   const getCategoryIcon = (category: string) => {
@@ -18,6 +20,8 @@ const BlogPage = () => {
       case 'Vivienda':
         return <MapPin className="w-5 h-5" />;
       case 'Estilo de Vida':
+        return <Wallet className="w-5 h-5" />;
+      case 'Inversión':
         return <Wallet className="w-5 h-5" />;
       default:
         return <FileText className="w-5 h-5" />;
@@ -34,6 +38,8 @@ const BlogPage = () => {
         return 'from-green-500/20 to-green-500/10';
       case 'Estilo de Vida':
         return 'from-purple-500/20 to-purple-500/10';
+      case 'Inversión':
+        return 'from-amber-500/20 to-amber-500/10';
       default:
         return 'from-primary/20 to-primary/10';
     }
@@ -41,6 +47,10 @@ const BlogPage = () => {
 
   const getBlogImage = (postId: string) => {
     switch (postId) {
+      case 'inversion-inmobiliaria-paraguay-asuncion-ciudad-del-este-encarnacion':
+        return blogInversionImage;
+      case 'marco-legal-fiscal-inversion-inmobiliaria-paraguay':
+        return blogMarcoFiscalImage;
       case 'costo-vida-paraguay-2025-presupuesto-mensual':
         return blogCostOfLivingImage;
       case 'impuestos-paraguay-sistema-territorial':

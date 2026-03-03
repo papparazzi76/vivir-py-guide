@@ -11,6 +11,26 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: 'inversion-inmobiliaria-paraguay-asuncion-ciudad-del-este-encarnacion',
+    title: 'Inversión Inmobiliaria en Paraguay 2025: Asunción, Ciudad del Este y Encarnación',
+    excerpt: 'Análisis estratégico del mercado inmobiliario en las tres ciudades principales de Paraguay. Comparativa de rentabilidades, precios por m², zonas prime y recomendaciones por perfil de inversor.',
+    date: '2026-03-01',
+    readTime: '18 min',
+    category: 'Inversión',
+    author: 'Living Paraguay',
+    image: '/src/assets/blog-inversion-inmobiliaria.webp',
+  },
+  {
+    id: 'marco-legal-fiscal-inversion-inmobiliaria-paraguay',
+    title: 'Marco Legal y Fiscal para Invertir en Inmuebles en Paraguay: Guía del Inversor',
+    excerpt: 'Todo sobre el sistema 10-10-10, la Ley 60/90, impuestos sobre alquileres y plusvalía, libertad cambiaria y el programa Che Róga Porã. La guía fiscal definitiva para inversores inmobiliarios.',
+    date: '2026-03-02',
+    readTime: '12 min',
+    category: 'Fiscalidad',
+    author: 'Living Paraguay',
+    image: '/src/assets/blog-marco-fiscal-paraguay.webp',
+  },
+  {
     id: 'costo-vida-paraguay-2025-presupuesto-mensual',
     title: 'Costo de Vida en Paraguay 2025: Presupuesto Mensual Detallado',
     excerpt: 'Análisis completo del costo de vida en Paraguay con presupuestos mensuales detallados por ciudad. Compara Asunción, Ciudad del Este y Encarnación para planificar tu mudanza.',
