@@ -4,6 +4,8 @@ import TaxationBlogPost from './blog/TaxationBlogPost';
 import ApostillarDocumentosPage from './blog/ApostillarDocumentosPage';
 import VillaMorraVsCarmelitasPage from './blog/VillaMorraVsCarmelitasPage';
 import CostOfLivingPage from './blog/CostOfLivingPage';
+import InversionInmobiliariaPage from './blog/InversionInmobiliariaPage';
+import MarcoFiscalInversionPage from './blog/MarcoFiscalInversionPage';
 
 const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -11,27 +13,25 @@ const BlogPostPage = () => {
   const post = blogPosts.find(p => p.id === slug);
 
   if (!post) {
-    return null; // Or redirect to 404
+    return null;
   }
 
-  // Route to specific blog post component based on slug
-  if (slug === 'costo-vida-paraguay-2025-presupuesto-mensual') {
-    return <CostOfLivingPage />;
+  switch (slug) {
+    case 'inversion-inmobiliaria-paraguay-asuncion-ciudad-del-este-encarnacion':
+      return <InversionInmobiliariaPage />;
+    case 'marco-legal-fiscal-inversion-inmobiliaria-paraguay':
+      return <MarcoFiscalInversionPage />;
+    case 'costo-vida-paraguay-2025-presupuesto-mensual':
+      return <CostOfLivingPage />;
+    case 'impuestos-paraguay-sistema-territorial':
+      return <TaxationBlogPost />;
+    case 'apostillar-documentos-paraguay':
+      return <ApostillarDocumentosPage />;
+    case 'villa-morra-vs-carmelitas-barrios-asuncion':
+      return <VillaMorraVsCarmelitasPage />;
+    default:
+      return null;
   }
-
-  if (slug === 'impuestos-paraguay-sistema-territorial') {
-    return <TaxationBlogPost />;
-  }
-
-  if (slug === 'apostillar-documentos-paraguay') {
-    return <ApostillarDocumentosPage />;
-  }
-
-  if (slug === 'villa-morra-vs-carmelitas-barrios-asuncion') {
-    return <VillaMorraVsCarmelitasPage />;
-  }
-
-  return null;
 };
 
 export default BlogPostPage;
