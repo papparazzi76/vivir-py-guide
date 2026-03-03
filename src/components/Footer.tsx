@@ -28,7 +28,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 mb-6 sm:mb-8">
           {/* Logo y Descripción */}
           <div>
-            <img src={logo} alt="Living Paraguay" className="h-12 w-auto mb-4 brightness-0 invert" />
+            <img src={logo} alt="Living Paraguay" className="h-24 w-auto mb-4 brightness-0 invert" />
             <p className="text-gray-300 text-sm">
               {t.footer.company}
             </p>
