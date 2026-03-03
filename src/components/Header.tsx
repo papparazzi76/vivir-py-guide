@@ -56,7 +56,7 @@ export const Header = () => {
               to="/"
               className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
             >
-              <img src={logo} alt="Living Paraguay" className="h-10 sm:h-12 w-auto" />
+              <img src={logo} alt="Living Paraguay" className="h-20 sm:h-24 w-auto" />
             </Link>
 
             {/* Desktop Navigation */}
