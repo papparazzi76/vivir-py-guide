@@ -38,6 +38,10 @@ export interface School {
   levels: string[];
   ranking: number;
   description: string;
+  type: 'Público' | 'Privado';
+  specialties: string[];
+  costs: string;
+  admissionRequirements: string;
 }
 
 export interface Neighborhood {
