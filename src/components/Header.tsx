@@ -122,20 +122,33 @@ export const Header = () => {
               <div className="pb-4 border-b border-border">
                 <LanguageSelector />
               </div>
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  onClick={handleMobileMenuClose}
-                  className={`text-left px-4 py-3 rounded-lg font-medium transition-colors ${
-                    isActivePath(link.path)
-                      ? 'bg-primary text-primary-foreground'
-                      : 'text-foreground hover:bg-muted'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) =>
+                link.external ? (
+                  <a
+                    key={link.path}
+                    href={link.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleMobileMenuClose}
+                    className="text-left px-4 py-3 rounded-lg font-medium transition-colors text-foreground hover:bg-muted"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    onClick={handleMobileMenuClose}
+                    className={`text-left px-4 py-3 rounded-lg font-medium transition-colors ${
+                      isActivePath(link.path)
+                        ? 'bg-primary text-primary-foreground'
+                        : 'text-foreground hover:bg-muted'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                )
+              )}
               <Link
                 to="/contact"
                 onClick={handleMobileMenuClose}
