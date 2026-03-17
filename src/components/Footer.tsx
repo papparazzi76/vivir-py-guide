@@ -10,7 +10,7 @@ export const Footer = () => {
   const navLinks = [
     { path: '/', label: t.nav.home },
     { path: '/permits', label: t.nav.permits },
-    { path: '/housing', label: t.nav.housing },
+    { path: 'https://tekoha.estate', label: t.nav.housing, external: true },
     { path: '/schools', label: t.nav.schools },
     { path: '/neighborhoods', label: t.nav.neighborhoods },
     { path: '/blog', label: 'Blog' },
@@ -40,12 +40,23 @@ export const Footer = () => {
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="text-gray-300 hover:text-white transition-colors"
-                  >
-                    {link.label}
-                  </Link>
+                  {link.external ? (
+                    <a
+                      href={link.path}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-300 hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.path}
+                      className="text-gray-300 hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
