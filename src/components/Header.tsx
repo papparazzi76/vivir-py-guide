@@ -14,7 +14,7 @@ export const Header = () => {
   const navLinks = [
     { path: '/', label: t.nav.home },
     { path: '/permits', label: t.nav.permits },
-    { path: '/housing', label: t.nav.housing },
+    { path: 'https://tekoha.estate', label: t.nav.housing, external: true },
     { path: '/schools', label: t.nav.schools },
     { path: '/neighborhoods', label: t.nav.neighborhoods },
     { path: '/taxation', label: t.nav.taxation },
@@ -61,22 +61,34 @@ export const Header = () => {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-6">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`relative font-medium transition-colors ${
-                    isActivePath(link.path)
-                      ? 'text-primary'
-                      : 'text-white hover:text-primary'
-                  }`}
-                >
-                  {link.label}
-                  {isActivePath(link.path) && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"></span>
-                  )}
-                </Link>
-              ))}
+              {navLinks.map((link) =>
+                link.external ? (
+                  <a
+                    key={link.path}
+                    href={link.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative font-medium transition-colors text-white hover:text-primary"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className={`relative font-medium transition-colors ${
+                      isActivePath(link.path)
+                        ? 'text-primary'
+                        : 'text-white hover:text-primary'
+                    }`}
+                  >
+                    {link.label}
+                    {isActivePath(link.path) && (
+                      <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"></span>
+                    )}
+                  </Link>
+                )
+              )}
             </nav>
 
             {/* Language Selector & CTA - Desktop */}
@@ -110,20 +122,33 @@ export const Header = () => {
               <div className="pb-4 border-b border-border">
                 <LanguageSelector />
               </div>
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  onClick={handleMobileMenuClose}
-                  className={`text-left px-4 py-3 rounded-lg font-medium transition-colors ${
-                    isActivePath(link.path)
-                      ? 'bg-primary text-primary-foreground'
-                      : 'text-foreground hover:bg-muted'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) =>
+                link.external ? (
+                  <a
+                    key={link.path}
+                    href={link.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleMobileMenuClose}
+                    className="text-left px-4 py-3 rounded-lg font-medium transition-colors text-foreground hover:bg-muted"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    onClick={handleMobileMenuClose}
+                    className={`text-left px-4 py-3 rounded-lg font-medium transition-colors ${
+                      isActivePath(link.path)
+                        ? 'bg-primary text-primary-foreground'
+                        : 'text-foreground hover:bg-muted'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                )
+              )}
               <Link
                 to="/contact"
                 onClick={handleMobileMenuClose}
