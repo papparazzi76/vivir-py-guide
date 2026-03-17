@@ -9,7 +9,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import HomePage from "./pages/HomePage";
 import PermitsPage from "./pages/PermitsPage";
-import HousingPage from "./pages/HousingPage";
+
 import SchoolsPage from "./pages/SchoolsPage";
 import NeighborhoodsPage from "./pages/NeighborhoodsPage";
 import TaxationPage from "./pages/TaxationPage";
