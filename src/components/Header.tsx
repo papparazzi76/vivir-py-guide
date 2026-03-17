@@ -14,7 +14,7 @@ export const Header = () => {
   const navLinks = [
     { path: '/', label: t.nav.home },
     { path: '/permits', label: t.nav.permits },
-    { path: '/housing', label: t.nav.housing },
+    { path: 'https://tekoha.estate', label: t.nav.housing, external: true },
     { path: '/schools', label: t.nav.schools },
     { path: '/neighborhoods', label: t.nav.neighborhoods },
     { path: '/taxation', label: t.nav.taxation },

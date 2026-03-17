@@ -37,7 +37,7 @@ const App = () => (
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/permits" element={<PermitsPage />} />
-                <Route path="/housing" element={<HousingPage />} />
+                {/* Housing removed - now links to tekoha.estate */}
                 <Route path="/schools" element={<SchoolsPage />} />
                 <Route path="/neighborhoods" element={<NeighborhoodsPage />} />
                 <Route path="/taxation" element={<TaxationPage />} />
