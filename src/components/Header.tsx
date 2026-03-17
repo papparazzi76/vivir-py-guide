@@ -61,22 +61,34 @@ export const Header = () => {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-6">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`relative font-medium transition-colors ${
-                    isActivePath(link.path)
-                      ? 'text-primary'
-                      : 'text-white hover:text-primary'
-                  }`}
-                >
-                  {link.label}
-                  {isActivePath(link.path) && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"></span>
-                  )}
-                </Link>
-              ))}
+              {navLinks.map((link) =>
+                link.external ? (
+                  <a
+                    key={link.path}
+                    href={link.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative font-medium transition-colors text-white hover:text-primary"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className={`relative font-medium transition-colors ${
+                      isActivePath(link.path)
+                        ? 'text-primary'
+                        : 'text-white hover:text-primary'
+                    }`}
+                  >
+                    {link.label}
+                    {isActivePath(link.path) && (
+                      <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"></span>
+                    )}
+                  </Link>
+                )
+              )}
             </nav>
 
             {/* Language Selector & CTA - Desktop */}
