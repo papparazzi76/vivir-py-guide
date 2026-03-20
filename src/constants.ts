@@ -97,7 +97,7 @@ export const SCHOOLS: School[] = [
   {
     id: '1',
     name: 'Colegio Técnico Nacional de Asunción (CTN)',
-    image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800',
+    image: new URL('./assets/schools/ctn.jpg', import.meta.url).href,
     location: 'R.I. 3 Corrales c/ Dr. Hassler',
     city: 'Asunción',
     languages: ['Español', 'Guaraní'],
@@ -112,7 +112,7 @@ export const SCHOOLS: School[] = [
   {
     id: '2',
     name: 'Colegio Santa Clara',
-    image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800',
+    image: new URL('./assets/schools/santa-clara.jpg', import.meta.url).href,
     location: 'Av. Mariscal López 3150',
     city: 'Asunción',
     languages: ['Español', 'Inglés'],
@@ -127,7 +127,7 @@ export const SCHOOLS: School[] = [
   {
     id: '3',
     name: 'American School of Asunción (ASA)',
-    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800',
+    image: new URL('./assets/schools/asa.jpg', import.meta.url).href,
     location: 'Avenida España 1175',
     city: 'Asunción',
     languages: ['Inglés', 'Español'],
@@ -142,7 +142,7 @@ export const SCHOOLS: School[] = [
   {
     id: '4',
     name: 'Trinity School',
-    image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800',
+    image: new URL('./assets/schools/trinity.jpg', import.meta.url).href,
     location: 'Luque',
     city: 'Luque',
     languages: ['Inglés', 'Español'],
@@ -157,7 +157,7 @@ export const SCHOOLS: School[] = [
   {
     id: '5',
     name: 'Colegio Internacional (Inter)',
-    image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800',
+    image: new URL('./assets/schools/inter.jpg', import.meta.url).href,
     location: 'Río de Janeiro c/ Padre Saubatte',
     city: 'Asunción',
     languages: ['Español', 'Inglés', 'Guaraní'],
@@ -172,7 +172,7 @@ export const SCHOOLS: School[] = [
   {
     id: '6',
     name: 'SEK Paraguay International School',
-    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800',
+    image: new URL('./assets/schools/sek.jpg', import.meta.url).href,
     location: 'C/ Mercedes Grau',
     city: 'Lambaré',
     languages: ['Español', 'Inglés', 'Guaraní'],
@@ -187,7 +187,7 @@ export const SCHOOLS: School[] = [
   {
     id: '7',
     name: 'Liberty School of Education',
-    image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800',
+    image: new URL('./assets/schools/liberty.jpg', import.meta.url).href,
     location: 'Cerca de Av. Mariscal López',
     city: 'Fernando de la Mora',
     languages: ['Español', 'Inglés'],
@@ -202,7 +202,7 @@ export const SCHOOLS: School[] = [
   {
     id: '8',
     name: "St. Anne's School (SAS)",
-    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800',
+    image: new URL('./assets/schools/sas.jpg', import.meta.url).href,
     location: 'Tte. Manuel Pino González y Eulalio Facetti',
     city: 'Asunción',
     languages: ['Inglés', 'Español'],
@@ -217,7 +217,7 @@ export const SCHOOLS: School[] = [
   {
     id: '9',
     name: 'Colegio del Sol',
-    image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800',
+    image: new URL('./assets/schools/del-sol.jpg', import.meta.url).href,
     location: 'Asunción',
     city: 'Asunción',
     languages: ['Español', 'Inglés'],
@@ -232,7 +232,7 @@ export const SCHOOLS: School[] = [
   {
     id: '10',
     name: 'Pan American International School',
-    image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800',
+    image: new URL('./assets/schools/pais.jpg', import.meta.url).href,
     location: 'Luque',
     city: 'Luque',
     languages: ['Inglés', 'Español'],
@@ -247,7 +247,7 @@ export const SCHOOLS: School[] = [
   {
     id: '11',
     name: 'Colegio Lumen',
-    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800',
+    image: new URL('./assets/schools/lumen.jpg', import.meta.url).href,
     location: 'Asunción',
     city: 'Asunción',
     languages: ['Español', 'Inglés'],
@@ -262,7 +262,7 @@ export const SCHOOLS: School[] = [
   {
     id: '12',
     name: 'Aula Viva',
-    image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800',
+    image: new URL('./assets/schools/aula-viva.jpg', import.meta.url).href,
     location: 'Asunción',
     city: 'Asunción',
     languages: ['Español', 'Inglés'],
@@ -277,7 +277,7 @@ export const SCHOOLS: School[] = [
   {
     id: '13',
     name: 'Colegio de la Asunción',
-    image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800',
+    image: new URL('./assets/schools/cas.jpg', import.meta.url).href,
     location: 'Fernando de la Mora',
     city: 'Fernando de la Mora',
     languages: ['Español', 'Inglés'],
@@ -292,7 +292,7 @@ export const SCHOOLS: School[] = [
   {
     id: '14',
     name: 'Colegio de San José',
-    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800',
+    image: new URL('./assets/schools/san-jose.jpg', import.meta.url).href,
     location: 'España y San José',
     city: 'Asunción',
     languages: ['Español', 'Guaraní'],
@@ -307,7 +307,7 @@ export const SCHOOLS: School[] = [
   {
     id: '15',
     name: 'Colegio Goethe',
-    image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800',
+    image: new URL('./assets/schools/goethe.jpg', import.meta.url).href,
     location: 'San Lorenzo',
     city: 'San Lorenzo',
     languages: ['Alemán', 'Español', 'Inglés'],
@@ -322,7 +322,7 @@ export const SCHOOLS: School[] = [
   {
     id: '16',
     name: 'Colegio Experimental Paraguay Brasil (CEPB-UNA)',
-    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800',
+    image: new URL('./assets/schools/cepb.jpg', import.meta.url).href,
     location: 'Campus de la UNA',
     city: 'San Lorenzo',
     languages: ['Español', 'Portugués'],
