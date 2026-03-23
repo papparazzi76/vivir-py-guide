@@ -40,7 +40,7 @@ export const PermitSection = () => {
           </p>
         </AnimatedDiv>
 
-        <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {/* Main Content - 2/3 */}
           <div className="lg:col-span-2 space-y-8">
             {/* Residencia Temporal */}
