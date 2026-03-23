@@ -143,9 +143,9 @@ export const PermitSection = () => {
                   </div>
                 </div>
                 
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-white rounded-lg p-4">
-                    <h4 className="font-bold mb-2">{t.permits.cedulaAllowsTitle}</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+                  <div className="bg-card rounded-lg p-3 sm:p-4">
+                    <h4 className="font-bold mb-2 text-sm sm:text-base">{t.permits.cedulaAllowsTitle}</h4>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-start space-x-2">
                         <Icon name="check" className="text-primary mt-0.5" size={16} />
