@@ -109,7 +109,7 @@ export const PermitSection = () => {
                     </ul>
                   </div>
                   
-                  <div className="bg-primary/5 rounded-xl p-6 border-2 border-primary/20">
+                  <div className="bg-primary/5 rounded-xl p-4 sm:p-6 border-2 border-primary/20">
                     <h4 className="font-bold text-lg mb-3">{t.permits.investorPathTitle}</h4>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-start space-x-2">
