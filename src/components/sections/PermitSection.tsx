@@ -90,8 +90,8 @@ export const PermitSection = () => {
                   </div>
                 </div>
                 
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-muted/50 rounded-xl p-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                  <div className="bg-muted/50 rounded-xl p-4 sm:p-6">
                     <h4 className="font-bold text-lg mb-3">{t.permits.standardPathTitle}</h4>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-start space-x-2">
