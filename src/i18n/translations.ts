@@ -1,4 +1,4 @@
-export type Language = 'es' | 'pt';
+export type Language = 'es' | 'pt' | 'en' | 'zh' | 'de';
 
 export interface Translations {
   // Navigation

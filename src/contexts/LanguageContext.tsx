@@ -15,7 +15,7 @@ const LANGUAGE_STORAGE_KEY = 'living-paraguay-language';
 const getInitialLanguage = (): Language => {
   try {
     const savedLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY);
-    if (savedLanguage === 'es' || savedLanguage === 'pt') {
+    if (savedLanguage === 'es' || savedLanguage === 'pt' || savedLanguage === 'en' || savedLanguage === 'zh' || savedLanguage === 'de') {
       return savedLanguage;
     }
   } catch (error) {
