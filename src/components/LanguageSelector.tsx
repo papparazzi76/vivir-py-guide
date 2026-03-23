@@ -4,6 +4,9 @@ import { Language } from '../i18n/translations';
 const languages: { code: Language; name: string; flag: string }[] = [
   { code: 'es', name: 'Español', flag: '🇪🇸' },
   { code: 'pt', name: 'Português', flag: '🇧🇷' },
+  { code: 'en', name: 'English', flag: '🇬🇧' },
+  { code: 'zh', name: '中文', flag: '🇨🇳' },
+  { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
 ];
 
 export const LanguageSelector = () => {
