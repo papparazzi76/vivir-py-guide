@@ -165,8 +165,8 @@ export const PermitSection = () => {
                       </li>
                     </ul>
                   </div>
-                  <div className="bg-white rounded-lg p-4">
-                    <h4 className="font-bold mb-2">{t.permits.cedulaRequirementsTitle}</h4>
+                  <div className="bg-card rounded-lg p-3 sm:p-4">
+                    <h4 className="font-bold mb-2 text-sm sm:text-base">{t.permits.cedulaRequirementsTitle}</h4>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-start space-x-2">
                         <Icon name="document" className="text-secondary mt-0.5" size={16} />
