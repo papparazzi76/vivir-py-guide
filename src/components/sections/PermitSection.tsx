@@ -194,40 +194,40 @@ export const PermitSection = () => {
             <AnimatedDiv delay={300}>
               <div className="bg-card rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 shadow-lg">
                 <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">{t.permits.comparisonTitle}</h3>
-                <div className="overflow-x-auto">
-                  <table className="w-full min-w-[500px]">
+                <div className="overflow-x-auto -mx-2 sm:mx-0">
+                  <table className="w-full min-w-[400px] text-xs sm:text-sm">
                   <thead>
                     <tr className="border-b-2 border-border">
-                      <th className="text-left py-3 px-4">{t.permits.comparisonFeature}</th>
-                      <th className="text-left py-3 px-4">{t.permits.comparisonTemporary}</th>
-                      <th className="text-left py-3 px-4">{t.permits.comparisonPermanent}</th>
-                      <th className="text-left py-3 px-4">{t.permits.comparisonSUACE}</th>
+                      <th className="text-left py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonFeature}</th>
+                      <th className="text-left py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonTemporary}</th>
+                      <th className="text-left py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonPermanent}</th>
+                      <th className="text-left py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonSUACE}</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-b border-border">
-                      <td className="py-3 px-4 font-medium">{t.permits.comparisonDuration}</td>
-                      <td className="py-3 px-4">{t.permits.comparisonDuration2Years}</td>
-                      <td className="py-3 px-4">{t.permits.comparisonDurationIndefinite}</td>
-                      <td className="py-3 px-4">{t.permits.comparisonDurationIndefinite}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4 font-medium">{t.permits.comparisonDuration}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonDuration2Years}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonDurationIndefinite}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonDurationIndefinite}</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 px-4 font-medium">{t.permits.comparisonInvestment}</td>
-                      <td className="py-3 px-4">{t.permits.comparisonInvestment5k}</td>
-                      <td className="py-3 px-4">{t.permits.comparisonInvestmentNA}</td>
-                      <td className="py-3 px-4">{t.permits.comparisonInvestmentVariable}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4 font-medium">{t.permits.comparisonInvestment}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonInvestment5k}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonInvestmentNA}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonInvestmentVariable}</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 px-4 font-medium">{t.permits.comparisonProcessing}</td>
-                      <td className="py-3 px-4">{t.permits.comparisonProcessing24}</td>
-                      <td className="py-3 px-4">{t.permits.comparisonProcessing36}</td>
-                      <td className="py-3 px-4">{t.permits.comparisonProcessing46}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4 font-medium">{t.permits.comparisonProcessing}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonProcessing24}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonProcessing36}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonProcessing46}</td>
                     </tr>
                     <tr>
-                      <td className="py-3 px-4 font-medium">{t.permits.comparisonGetsCedula}</td>
-                      <td className="py-3 px-4">✓</td>
-                      <td className="py-3 px-4">✓</td>
-                      <td className="py-3 px-4">✓</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4 font-medium">{t.permits.comparisonGetsCedula}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">✓</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">✓</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">✓</td>
                     </tr>
                     </tbody>
                   </table>
