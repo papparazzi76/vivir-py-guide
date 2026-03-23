@@ -60,7 +60,7 @@ export const Header = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-6">
+            <nav className="hidden xl:flex items-center space-x-4 text-sm">
               {navLinks.map((link) =>
                 link.external ? (
                   <a
@@ -92,7 +92,7 @@ export const Header = () => {
             </nav>
 
             {/* Language Selector & CTA - Desktop */}
-            <div className="hidden lg:flex items-center gap-4">
+            <div className="hidden xl:flex items-center gap-3">
               <LanguageSelector />
               <Link
                 to="/contact"
@@ -105,7 +105,7 @@ export const Header = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
+              className="xl:hidden p-2 text-foreground hover:text-primary transition-colors"
             >
               <Icon name={isMobileMenuOpen ? 'close' : 'menu'} size={28} />
             </button>
@@ -115,7 +115,7 @@ export const Header = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden">
+        <div className="fixed inset-0 z-40 xl:hidden">
           <div className="fixed inset-0 bg-black/50" onClick={() => setIsMobileMenuOpen(false)}></div>
           <nav className="fixed top-20 right-0 bottom-0 w-64 bg-white shadow-xl p-6 overflow-y-auto">
             <div className="flex flex-col space-y-4">
