@@ -40,7 +40,7 @@ export const PermitSection = () => {
           </p>
         </AnimatedDiv>
 
-        <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {/* Main Content - 2/3 */}
           <div className="lg:col-span-2 space-y-8">
             {/* Residencia Temporal */}
@@ -56,22 +56,22 @@ export const PermitSection = () => {
                   </div>
                 </div>
                 
-                <div className="space-y-4 mb-6">
+                <div className="space-y-3 sm:space-y-4 mb-4 sm:mb-6">
                   <div className="flex items-start space-x-3">
                     <Icon name="check" className="text-primary mt-1 flex-shrink-0" />
-                    <p><strong>{t.permits.temporaryDuration}</strong> {t.permits.temporaryReq1}</p>
+                    <p className="text-sm sm:text-base"><strong>{t.permits.temporaryDuration}</strong> {t.permits.temporaryReq1}</p>
                   </div>
                   <div className="flex items-start space-x-3">
                     <Icon name="check" className="text-primary mt-1 flex-shrink-0" />
-                    <p><strong>{t.permits.temporaryRequirement}</strong> {t.permits.temporaryReq2}</p>
+                    <p className="text-sm sm:text-base"><strong>{t.permits.temporaryRequirement}</strong> {t.permits.temporaryReq2}</p>
                   </div>
                   <div className="flex items-start space-x-3">
                     <Icon name="check" className="text-primary mt-1 flex-shrink-0" />
-                    <p><strong>Documentos clave:</strong> {t.permits.temporaryReq3}</p>
+                    <p className="text-sm sm:text-base"><strong>Documentos clave:</strong> {t.permits.temporaryReq3}</p>
                   </div>
                   <div className="flex items-start space-x-3">
                     <Icon name="check" className="text-primary mt-1 flex-shrink-0" />
-                    <p><strong>Beneficio:</strong> {t.permits.temporaryReq4}</p>
+                    <p className="text-sm sm:text-base"><strong>Beneficio:</strong> {t.permits.temporaryReq4}</p>
                   </div>
                 </div>
               </div>
@@ -90,8 +90,8 @@ export const PermitSection = () => {
                   </div>
                 </div>
                 
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-muted/50 rounded-xl p-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                  <div className="bg-muted/50 rounded-xl p-4 sm:p-6">
                     <h4 className="font-bold text-lg mb-3">{t.permits.standardPathTitle}</h4>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-start space-x-2">
@@ -109,7 +109,7 @@ export const PermitSection = () => {
                     </ul>
                   </div>
                   
-                  <div className="bg-primary/5 rounded-xl p-6 border-2 border-primary/20">
+                  <div className="bg-primary/5 rounded-xl p-4 sm:p-6 border-2 border-primary/20">
                     <h4 className="font-bold text-lg mb-3">{t.permits.investorPathTitle}</h4>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-start space-x-2">
@@ -143,9 +143,9 @@ export const PermitSection = () => {
                   </div>
                 </div>
                 
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-white rounded-lg p-4">
-                    <h4 className="font-bold mb-2">{t.permits.cedulaAllowsTitle}</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+                  <div className="bg-card rounded-lg p-3 sm:p-4">
+                    <h4 className="font-bold mb-2 text-sm sm:text-base">{t.permits.cedulaAllowsTitle}</h4>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-start space-x-2">
                         <Icon name="check" className="text-primary mt-0.5" size={16} />
@@ -165,8 +165,8 @@ export const PermitSection = () => {
                       </li>
                     </ul>
                   </div>
-                  <div className="bg-white rounded-lg p-4">
-                    <h4 className="font-bold mb-2">{t.permits.cedulaRequirementsTitle}</h4>
+                  <div className="bg-card rounded-lg p-3 sm:p-4">
+                    <h4 className="font-bold mb-2 text-sm sm:text-base">{t.permits.cedulaRequirementsTitle}</h4>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-start space-x-2">
                         <Icon name="document" className="text-secondary mt-0.5" size={16} />
@@ -194,40 +194,40 @@ export const PermitSection = () => {
             <AnimatedDiv delay={300}>
               <div className="bg-card rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 shadow-lg">
                 <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">{t.permits.comparisonTitle}</h3>
-                <div className="overflow-x-auto">
-                  <table className="w-full min-w-[500px]">
+                <div className="overflow-x-auto -mx-2 sm:mx-0">
+                  <table className="w-full min-w-[400px] text-xs sm:text-sm">
                   <thead>
                     <tr className="border-b-2 border-border">
-                      <th className="text-left py-3 px-4">{t.permits.comparisonFeature}</th>
-                      <th className="text-left py-3 px-4">{t.permits.comparisonTemporary}</th>
-                      <th className="text-left py-3 px-4">{t.permits.comparisonPermanent}</th>
-                      <th className="text-left py-3 px-4">{t.permits.comparisonSUACE}</th>
+                      <th className="text-left py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonFeature}</th>
+                      <th className="text-left py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonTemporary}</th>
+                      <th className="text-left py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonPermanent}</th>
+                      <th className="text-left py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonSUACE}</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-b border-border">
-                      <td className="py-3 px-4 font-medium">{t.permits.comparisonDuration}</td>
-                      <td className="py-3 px-4">{t.permits.comparisonDuration2Years}</td>
-                      <td className="py-3 px-4">{t.permits.comparisonDurationIndefinite}</td>
-                      <td className="py-3 px-4">{t.permits.comparisonDurationIndefinite}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4 font-medium">{t.permits.comparisonDuration}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonDuration2Years}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonDurationIndefinite}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonDurationIndefinite}</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 px-4 font-medium">{t.permits.comparisonInvestment}</td>
-                      <td className="py-3 px-4">{t.permits.comparisonInvestment5k}</td>
-                      <td className="py-3 px-4">{t.permits.comparisonInvestmentNA}</td>
-                      <td className="py-3 px-4">{t.permits.comparisonInvestmentVariable}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4 font-medium">{t.permits.comparisonInvestment}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonInvestment5k}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonInvestmentNA}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonInvestmentVariable}</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 px-4 font-medium">{t.permits.comparisonProcessing}</td>
-                      <td className="py-3 px-4">{t.permits.comparisonProcessing24}</td>
-                      <td className="py-3 px-4">{t.permits.comparisonProcessing36}</td>
-                      <td className="py-3 px-4">{t.permits.comparisonProcessing46}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4 font-medium">{t.permits.comparisonProcessing}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonProcessing24}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonProcessing36}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">{t.permits.comparisonProcessing46}</td>
                     </tr>
                     <tr>
-                      <td className="py-3 px-4 font-medium">{t.permits.comparisonGetsCedula}</td>
-                      <td className="py-3 px-4">✓</td>
-                      <td className="py-3 px-4">✓</td>
-                      <td className="py-3 px-4">✓</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4 font-medium">{t.permits.comparisonGetsCedula}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">✓</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">✓</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">✓</td>
                     </tr>
                     </tbody>
                   </table>
@@ -296,7 +296,7 @@ export const PermitSection = () => {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full px-6 py-3 bg-white text-primary rounded-lg font-bold hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full px-6 py-3 bg-background text-primary rounded-lg font-bold hover:bg-muted transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         {isSubmitting ? t.permits.contactFormSubmitting : t.permits.contactFormSubmit}
                       </button>
