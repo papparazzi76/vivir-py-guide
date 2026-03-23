@@ -67,14 +67,37 @@ serve(async (req) => {
       );
     }
 
+    const MAX_MESSAGES = 20;
+    const MAX_MSG_LENGTH = 2000;
+    const ALLOWED_ROLES = ['user', 'assistant'];
+
+    if (messages.length > MAX_MESSAGES) {
+      return new Response(
+        JSON.stringify({ error: 'Too many messages' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Sanitize and validate messages
+    const sanitized = messages
+      .filter((msg: any) => typeof msg.role === 'string' && typeof msg.content === 'string' && ALLOWED_ROLES.includes(msg.role))
+      .map((msg: { role: string; content: string }) => ({
+        role: msg.role === 'assistant' ? 'model' : 'user',
+        parts: [{ text: String(msg.content).slice(0, MAX_MSG_LENGTH) }],
+      }));
+
+    if (sanitized.length === 0) {
+      return new Response(
+        JSON.stringify({ error: 'No valid messages provided' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
     // Format messages for Gemini API
     const contents = [
       { role: 'user', parts: [{ text: SYSTEM_PROMPT }] },
       { role: 'model', parts: [{ text: 'Entendido. Estoy listo para ayudar a expatriados con información sobre Paraguay.' }] },
-      ...messages.map((msg: { role: string; content: string }) => ({
-        role: msg.role === 'assistant' ? 'model' : 'user',
-        parts: [{ text: msg.content }],
-      })),
+      ...sanitized,
     ];
 
     console.log('Calling Gemini API with', messages.length, 'messages');
