@@ -69,9 +69,7 @@ export const PermitSection = () => {
                     <p className="text-sm sm:text-base"><strong>Documentos clave:</strong> {t.permits.temporaryReq3}</p>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <Icon name="check" className="text-primary mt-1 flex-shrink-0" />
-                    <p><strong>Beneficio:</strong> {t.permits.temporaryReq4}</p>
-                  </div>
+                    <p className="text-sm sm:text-base"><strong>Beneficio:</strong> {t.permits.temporaryReq4}</p>
                 </div>
               </div>
             </AnimatedDiv>
