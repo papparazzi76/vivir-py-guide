@@ -296,7 +296,7 @@ export const PermitSection = () => {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full px-6 py-3 bg-white text-primary rounded-lg font-bold hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full px-6 py-3 bg-background text-primary rounded-lg font-bold hover:bg-muted transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         {isSubmitting ? t.permits.contactFormSubmitting : t.permits.contactFormSubmit}
                       </button>
