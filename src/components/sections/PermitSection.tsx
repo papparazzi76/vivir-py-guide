@@ -56,14 +56,14 @@ export const PermitSection = () => {
                   </div>
                 </div>
                 
-                <div className="space-y-4 mb-6">
+                <div className="space-y-3 sm:space-y-4 mb-4 sm:mb-6">
                   <div className="flex items-start space-x-3">
                     <Icon name="check" className="text-primary mt-1 flex-shrink-0" />
-                    <p><strong>{t.permits.temporaryDuration}</strong> {t.permits.temporaryReq1}</p>
+                    <p className="text-sm sm:text-base"><strong>{t.permits.temporaryDuration}</strong> {t.permits.temporaryReq1}</p>
                   </div>
                   <div className="flex items-start space-x-3">
                     <Icon name="check" className="text-primary mt-1 flex-shrink-0" />
-                    <p><strong>{t.permits.temporaryRequirement}</strong> {t.permits.temporaryReq2}</p>
+                    <p className="text-sm sm:text-base"><strong>{t.permits.temporaryRequirement}</strong> {t.permits.temporaryReq2}</p>
                   </div>
                   <div className="flex items-start space-x-3">
                     <p className="text-sm sm:text-base"><strong>Documentos clave:</strong> {t.permits.temporaryReq3}</p>
