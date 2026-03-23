@@ -92,7 +92,7 @@ export const Header = () => {
             </nav>
 
             {/* Language Selector & CTA - Desktop */}
-            <div className="hidden lg:flex items-center gap-4">
+            <div className="hidden xl:flex items-center gap-3">
               <LanguageSelector />
               <Link
                 to="/contact"
