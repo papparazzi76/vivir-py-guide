@@ -105,7 +105,7 @@ export const Header = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
+              className="xl:hidden p-2 text-foreground hover:text-primary transition-colors"
             >
               <Icon name={isMobileMenuOpen ? 'close' : 'menu'} size={28} />
             </button>
