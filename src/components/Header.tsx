@@ -60,7 +60,7 @@ export const Header = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-6">
+            <nav className="hidden xl:flex items-center space-x-4 text-sm">
               {navLinks.map((link) =>
                 link.external ? (
                   <a
