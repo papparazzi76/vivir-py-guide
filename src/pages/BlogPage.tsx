@@ -9,6 +9,7 @@ import blogNeighborhoodsImage from '@/assets/blog-neighborhoods.webp';
 import blogCostOfLivingImage from '@/assets/blog-cost-of-living.webp';
 import blogInversionImage from '@/assets/blog-inversion-inmobiliaria.webp';
 import blogMarcoFiscalImage from '@/assets/blog-marco-fiscal-paraguay.webp';
+import blogInvestorPassImage from '@/assets/blog-investor-pass.webp';
 
 const BlogPage = () => {
   const getCategoryIcon = (category: string) => {
@@ -47,6 +48,8 @@ const BlogPage = () => {
 
   const getBlogImage = (postId: string) => {
     switch (postId) {
+      case 'paraguay-investor-pass-2026-movilidad-global':
+        return blogInvestorPassImage;
       case 'inversion-inmobiliaria-paraguay-asuncion-ciudad-del-este-encarnacion':
         return blogInversionImage;
       case 'marco-legal-fiscal-inversion-inmobiliaria-paraguay':

@@ -11,6 +11,16 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: 'paraguay-investor-pass-2026-movilidad-global',
+    title: 'Paraguay 2026: Por qué el nuevo "Investor Pass" está redibujando el mapa de la movilidad global',
+    excerpt: 'Análisis estratégico del Paraguay Investor Pass: residencia permanente directa, umbrales de inversión desde USD 150.000, dividendos al 8% y por qué el Cono Sur sustituye a las Golden Visas europeas en 2026.',
+    date: '2026-04-24',
+    readTime: '16 min',
+    category: 'Inversión',
+    author: 'Living Paraguay',
+    image: '/src/assets/blog-investor-pass.webp',
+  },
+  {
     id: 'inversion-inmobiliaria-paraguay-asuncion-ciudad-del-este-encarnacion',
     title: 'Inversión Inmobiliaria en Paraguay 2025: Asunción, Ciudad del Este y Encarnación',
     excerpt: 'Análisis estratégico del mercado inmobiliario en las tres ciudades principales de Paraguay. Comparativa de rentabilidades, precios por m², zonas prime y recomendaciones por perfil de inversor.',

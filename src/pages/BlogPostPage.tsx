@@ -6,6 +6,7 @@ import VillaMorraVsCarmelitasPage from './blog/VillaMorraVsCarmelitasPage';
 import CostOfLivingPage from './blog/CostOfLivingPage';
 import InversionInmobiliariaPage from './blog/InversionInmobiliariaPage';
 import MarcoFiscalInversionPage from './blog/MarcoFiscalInversionPage';
+import InvestorPassPage from './blog/InvestorPassPage';
 
 const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -17,6 +18,8 @@ const BlogPostPage = () => {
   }
 
   switch (slug) {
+    case 'paraguay-investor-pass-2026-movilidad-global':
+      return <InvestorPassPage />;
     case 'inversion-inmobiliaria-paraguay-asuncion-ciudad-del-este-encarnacion':
       return <InversionInmobiliariaPage />;
     case 'marco-legal-fiscal-inversion-inmobiliaria-paraguay':
