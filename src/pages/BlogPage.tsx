@@ -9,6 +9,7 @@ import blogNeighborhoodsImage from '@/assets/blog-neighborhoods.webp';
 import blogCostOfLivingImage from '@/assets/blog-cost-of-living.webp';
 import blogInversionImage from '@/assets/blog-inversion-inmobiliaria.webp';
 import blogMarcoFiscalImage from '@/assets/blog-marco-fiscal-paraguay.webp';
+import blogInvestorPassImage from '@/assets/blog-investor-pass.webp';
 
 const BlogPage = () => {
   const getCategoryIcon = (category: string) => {
